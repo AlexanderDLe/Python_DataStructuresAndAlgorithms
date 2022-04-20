@@ -1,0 +1,1019 @@
+[
+    {
+        "label": "math",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "math",
+        "description": "math",
+        "detail": "math",
+        "documentation": {}
+    },
+    {
+        "label": "heapq",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "heapq",
+        "description": "heapq",
+        "detail": "heapq",
+        "documentation": {}
+    },
+    {
+        "label": "os,",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "os.",
+        "description": "os.",
+        "detail": "os.",
+        "documentation": {}
+    },
+    {
+        "label": "cmp_to_key",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "cmp_to_key",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "cmp_to_key",
+        "importPath": "functools",
+        "description": "functools",
+        "isExtraImport": true,
+        "detail": "functools",
+        "documentation": {}
+    },
+    {
+        "label": "printDict",
+        "importPath": "_utils",
+        "description": "_utils",
+        "isExtraImport": true,
+        "detail": "_utils",
+        "documentation": {}
+    },
+    {
+        "label": "printMatrix",
+        "importPath": "_utils",
+        "description": "_utils",
+        "isExtraImport": true,
+        "detail": "_utils",
+        "documentation": {}
+    },
+    {
+        "label": "printMatrix",
+        "importPath": "_utils",
+        "description": "_utils",
+        "isExtraImport": true,
+        "detail": "_utils",
+        "documentation": {}
+    },
+    {
+        "label": "collections",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "collections",
+        "description": "collections",
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "deque",
+        "importPath": "collections",
+        "description": "collections",
+        "isExtraImport": true,
+        "detail": "collections",
+        "documentation": {}
+    },
+    {
+        "label": "string",
+        "kind": 6,
+        "isExtraImport": true,
+        "importPath": "string",
+        "description": "string",
+        "detail": "string",
+        "documentation": {}
+    },
+    {
+        "label": "TreeNode",
+        "importPath": "DataStrucutres",
+        "description": "DataStrucutres",
+        "isExtraImport": true,
+        "detail": "DataStrucutres",
+        "documentation": {}
+    },
+    {
+        "label": "TreeNode",
+        "importPath": "DataStrucutres",
+        "description": "DataStrucutres",
+        "isExtraImport": true,
+        "detail": "DataStrucutres",
+        "documentation": {}
+    },
+    {
+        "label": "getTrips",
+        "kind": 2,
+        "importPath": "Amazon.AmazonBoxes",
+        "description": "Amazon.AmazonBoxes",
+        "peekOfCode": "def getTrips(frequency):\n  if (frequency == 1):\n    return -1\n  if (frequency % 3 == 0):\n    return frequency / 3\n  if (frequency % 3 == 2 or frequency % 3 == 1):\n    return math.floor((frequency / 3)) + 1\ndef amazonBoxes(weights: list[int]):\n  map = {}\n  for weight in weights:",
+        "detail": "Amazon.AmazonBoxes",
+        "documentation": {}
+    },
+    {
+        "label": "amazonBoxes",
+        "kind": 2,
+        "importPath": "Amazon.AmazonBoxes",
+        "description": "Amazon.AmazonBoxes",
+        "peekOfCode": "def amazonBoxes(weights: list[int]):\n  map = {}\n  for weight in weights:\n    map[weight] = map.get(weight, 0) + 1\n  totalTrips = 0\n  for key in map:\n    trips = getTrips(map[key])    \n    if trips == -1:\n      return -1\n    totalTrips += trips",
+        "detail": "Amazon.AmazonBoxes",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "Amazon.AmazonBoxes",
+        "description": "Amazon.AmazonBoxes",
+        "peekOfCode": "result = amazonBoxes([2, 2, 3, 3, 2, 4, 4, 4, 4, 4])\nprint(result)",
+        "detail": "Amazon.AmazonBoxes",
+        "documentation": {}
+    },
+    {
+        "label": "scoring",
+        "kind": 2,
+        "importPath": "Amazon.AmazonScores",
+        "description": "Amazon.AmazonScores",
+        "peekOfCode": "def scoring(scores, cutOffRank, num):\n  scores.sort(reverse = True)\n  print(scores)\n  lvls =  0\n  rank = 0\n  prev = 0\n  for score in scores:\n    if score == 0: break\n    if rank >= cutOffRank: break\n    lvls += 1",
+        "detail": "Amazon.AmazonScores",
+        "documentation": {}
+    },
+    {
+        "label": "buildNameToHistory",
+        "kind": 2,
+        "importPath": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "description": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "peekOfCode": "def buildNameToHistory(username, timestamp, website, n):\n  nameToPattern = {}\n  for i in range(n):\n    name, time, site = username[i], timestamp[i], website[i]\n    if name not in nameToPattern: nameToPattern[name] = []\n    nameToPattern[name].append((time, site))\n  return nameToPattern\ndef buildPatternFrequency(nameToPattern):\n  frequencyMap = {}\n  for name in nameToPattern:",
+        "detail": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "documentation": {}
+    },
+    {
+        "label": "buildPatternFrequency",
+        "kind": 2,
+        "importPath": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "description": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "peekOfCode": "def buildPatternFrequency(nameToPattern):\n  frequencyMap = {}\n  for name in nameToPattern:\n    history = sorted(nameToPattern[name], key=lambda x: x[0])\n    seenSet = set()\n    for i in range(0, len(history) - 2):\n      for j in range(i + 1, len(history) - 1):\n        for k in range(j + 1, len(history)):\n          encode = f'{history[i][1]}-{history[j][1]}-{history[k][1]}'\n          if encode not in seenSet:",
+        "detail": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "documentation": {}
+    },
+    {
+        "label": "compare",
+        "kind": 2,
+        "importPath": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "description": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "peekOfCode": "def compare(a, b):\n  aCode, bCode = a[0], b[0]\n  aFreq, bFreq = a[1]['frequency'], b[1]['frequency']\n  if aFreq == bFreq:\n    if aCode < bCode: return -1\n    else            : return 1\n  return bFreq - aFreq\ndef mostVisitedPattern(username, timestamp, website):\n  n = len(timestamp)\n  nameToTimeHistory = buildNameToHistory(username, timestamp, website, n)",
+        "detail": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "documentation": {}
+    },
+    {
+        "label": "mostVisitedPattern",
+        "kind": 2,
+        "importPath": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "description": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "peekOfCode": "def mostVisitedPattern(username, timestamp, website):\n  n = len(timestamp)\n  nameToTimeHistory = buildNameToHistory(username, timestamp, website, n)\n  patternFrequency  = buildPatternFrequency(nameToTimeHistory)\n  printDict(patternFrequency)\n  sortedItems = sorted(patternFrequency.items(), key=cmp_to_key(compare))\n  return sortedItems[0][1]['pattern']\nprint(mostVisitedPattern([\n  \"joe\",\"joe\",\"joe\",\"james\",\"james\",\"james\",\"james\",\"mary\",\"mary\",\"mary\"], \n  [1,2,3,4,5,6,7,8,9,10], ",
+        "detail": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "documentation": {}
+    },
+    {
+        "label": "currentdir",
+        "kind": 5,
+        "importPath": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "description": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "peekOfCode": "currentdir = os.path.dirname(os.path.realpath(__file__))\nparentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom functools import cmp_to_key\nfrom _utils import printDict\ndef buildNameToHistory(username, timestamp, website, n):\n  nameToPattern = {}\n  for i in range(n):\n    name, time, site = username[i], timestamp[i], website[i]\n    if name not in nameToPattern: nameToPattern[name] = []",
+        "detail": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "documentation": {}
+    },
+    {
+        "label": "parentdir",
+        "kind": 5,
+        "importPath": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "description": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "peekOfCode": "parentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom functools import cmp_to_key\nfrom _utils import printDict\ndef buildNameToHistory(username, timestamp, website, n):\n  nameToPattern = {}\n  for i in range(n):\n    name, time, site = username[i], timestamp[i], website[i]\n    if name not in nameToPattern: nameToPattern[name] = []\n    nameToPattern[name].append((time, site))",
+        "detail": "Amazon.AnalyzeUserWebsiteVisitPattern",
+        "documentation": {}
+    },
+    {
+        "label": "averageStockPrices",
+        "kind": 2,
+        "importPath": "Amazon.AverageStockPrices",
+        "description": "Amazon.AverageStockPrices",
+        "peekOfCode": "def averageStockPrices(prices):\n  n = len(prices)\n  totalSum = sum(prices)\n  currSum = 0\n  minDiff = math.inf\n  for i in range(n):\n    currSum += prices[i]\n    count = i + 1\n    currentAverage = math.floor(currSum / count)\n    remainingDivisor = (n - count) or 1",
+        "detail": "Amazon.AverageStockPrices",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "Amazon.AverageStockPrices",
+        "description": "Amazon.AverageStockPrices",
+        "peekOfCode": "result = averageStockPrices([1,2,3,4,5,6])\nprint(result)",
+        "detail": "Amazon.AverageStockPrices",
+        "documentation": {}
+    },
+    {
+        "label": "calculateGreyness",
+        "kind": 2,
+        "importPath": "Amazon.CalculateGreyness",
+        "description": "Amazon.CalculateGreyness",
+        "peekOfCode": "def calculateGreyness(pixels):\n  rows = len(pixels)\n  cols = len(pixels[0])\n  totalPossibleOnes = rows + cols - 1\n  maxOnesInRows = 0\n  maxOnesInCols = 0\n  maxRow = 0\n  maxCol = 0\n  # Assuming nxn matrix, we can iterate n*m once, otherwise iterate twice\n  for row in range(rows):",
+        "detail": "Amazon.CalculateGreyness",
+        "documentation": {}
+    },
+    {
+        "label": "result",
+        "kind": 5,
+        "importPath": "Amazon.CalculateGreyness",
+        "description": "Amazon.CalculateGreyness",
+        "peekOfCode": "result = calculateGreyness([\n  [0 ,1 ,0 ,1],\n  [1 ,1 ,0 ,0],\n  [0 ,1 ,1 ,1],\n  [0 ,1 ,0 ,1]\n])\nprint(result)",
+        "detail": "Amazon.CalculateGreyness",
+        "documentation": {}
+    },
+    {
+        "label": "countOutingDays",
+        "kind": 2,
+        "importPath": "Amazon.CountTheOutingDays",
+        "description": "Amazon.CountTheOutingDays",
+        "peekOfCode": "def countOutingDays(rainfall, k):\n  n = len(rainfall)\n  fromLeft = n * [0]\n  fromRight = n * [0]\n  for i in range(1, n):\n    if (rainfall[i] >= rainfall[i - 1]):\n      fromLeft[i] = fromLeft[i - 1] + 1\n  for i in range(n - 2, -1, -1):\n    if (rainfall[i] >= rainfall[i + 1]):\n      fromRight[i] = fromRight[i + 1] + 1",
+        "detail": "Amazon.CountTheOutingDays",
+        "documentation": {}
+    },
+    {
+        "label": "countChars",
+        "kind": 2,
+        "importPath": "Amazon.CountUniqueCharactersOfAllSubstringsOfAGivenString",
+        "description": "Amazon.CountUniqueCharactersOfAllSubstringsOfAGivenString",
+        "peekOfCode": "def countChars(str):\n  n = len(str)\n  dict = {}\n  for i, char in enumerate(str):\n    if char not in dict: dict[char] = []\n    dict[char].append(i)\n  result = 0\n  for key in dict:\n    indexes = dict[key]\n    for i, index in enumerate(indexes):",
+        "detail": "Amazon.CountUniqueCharactersOfAllSubstringsOfAGivenString",
+        "documentation": {}
+    },
+    {
+        "label": "ParkingSystem",
+        "kind": 6,
+        "importPath": "Amazon.DesignParkingGarage",
+        "description": "Amazon.DesignParkingGarage",
+        "peekOfCode": "class ParkingSystem:\n  def __init__(self, big, medium, small) -> None:\n    self.parking = {\n      1: big,\n      2: medium,\n      3: small\n    }\n  def addCar(self, carType: int) -> bool:\n    availability = self.parking[carType]\n    if availability > 0:",
+        "detail": "Amazon.DesignParkingGarage",
+        "documentation": {}
+    },
+    {
+        "label": "parkingSystem",
+        "kind": 5,
+        "importPath": "Amazon.DesignParkingGarage",
+        "description": "Amazon.DesignParkingGarage",
+        "peekOfCode": "parkingSystem = ParkingSystem(1, 1, 0)\nprint(parkingSystem.addCar(1))\nprint(parkingSystem.addCar(2))\nprint(parkingSystem.addCar(3))\nprint(parkingSystem.addCar(2))\nprint(parkingSystem.addCar(3))",
+        "detail": "Amazon.DesignParkingGarage",
+        "documentation": {}
+    },
+    {
+        "label": "determineSegmentsNonOverlapping",
+        "kind": 2,
+        "importPath": "Amazon.DetermineSegments",
+        "description": "Amazon.DetermineSegments",
+        "peekOfCode": "def determineSegmentsNonOverlapping(nums, k):\n  maxQ, minQ = [], []\n  getQFront = lambda Q: nums[Q[0]]\n  getQLast  = lambda Q: nums[Q[-1]]\n  getQDiff  = lambda  : abs(getQFront(maxQ) - getQFront(minQ))\n  results = []\n  L, R = 0, 0\n  while R < len(nums):\n    Rval = nums[R]\n    while maxQ and Rval > getQLast(maxQ): maxQ.pop()",
+        "detail": "Amazon.DetermineSegments",
+        "documentation": {}
+    },
+    {
+        "label": "determineSegments",
+        "kind": 2,
+        "importPath": "Amazon.DetermineSegments",
+        "description": "Amazon.DetermineSegments",
+        "peekOfCode": "def determineSegments(nums, k):\n  n = len(nums)\n  contributions = [n] * n\n  queue = deque()\n  getQVal = lambda : nums[queue[0]]\n  for i in range(len(nums)):\n    num = nums[i]\n    while queue and abs(num - getQVal()) > k:\n      qIndex = queue.popleft()\n      contributions[qIndex] = i",
+        "detail": "Amazon.DetermineSegments",
+        "documentation": {}
+    },
+    {
+        "label": "distributePackets",
+        "kind": 2,
+        "importPath": "Amazon.DistributePackets",
+        "description": "Amazon.DistributePackets",
+        "peekOfCode": "def distributePackets(channels, packets):\n  packets.sort(reverse=True)\n  heap = [0] * channels\n  maxSum = 0\n  for packet in packets:\n    smallestChannel = heapq.heappop(heap)\n    updatedChannel  = smallestChannel + packet\n    maxSum = max(maxSum, updatedChannel)\n    heapq.heappush(heap, updatedChannel)\n  print(heap)",
+        "detail": "Amazon.DistributePackets",
+        "documentation": {}
+    },
+    {
+        "label": "divideChocolate",
+        "kind": 2,
+        "importPath": "Amazon.DivideChocolate",
+        "description": "Amazon.DivideChocolate",
+        "peekOfCode": "def divideChocolate(sweetnessArr, k):\n  total = sum(sweetnessArr)\n  L = min(sweetnessArr)\n  R = total // (k + 1)\n  while L < R:\n    M = (L + R + 1) // 2\n    chunks = 0\n    currSweetness = 0\n    for sweetness in sweetnessArr:\n      currSweetness += sweetness",
+        "detail": "Amazon.DivideChocolate",
+        "documentation": {}
+    },
+    {
+        "label": "currentdir",
+        "kind": 5,
+        "importPath": "Amazon.DivideChocolate",
+        "description": "Amazon.DivideChocolate",
+        "peekOfCode": "currentdir = os.path.dirname(os.path.realpath(__file__))\nparentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom _utils import printMatrix\ndef divideChocolate(sweetnessArr, k):\n  total = sum(sweetnessArr)\n  L = min(sweetnessArr)\n  R = total // (k + 1)\n  while L < R:\n    M = (L + R + 1) // 2",
+        "detail": "Amazon.DivideChocolate",
+        "documentation": {}
+    },
+    {
+        "label": "parentdir",
+        "kind": 5,
+        "importPath": "Amazon.DivideChocolate",
+        "description": "Amazon.DivideChocolate",
+        "peekOfCode": "parentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom _utils import printMatrix\ndef divideChocolate(sweetnessArr, k):\n  total = sum(sweetnessArr)\n  L = min(sweetnessArr)\n  R = total // (k + 1)\n  while L < R:\n    M = (L + R + 1) // 2\n    chunks = 0",
+        "detail": "Amazon.DivideChocolate",
+        "documentation": {}
+    },
+    {
+        "label": "itemCanFit",
+        "kind": 2,
+        "importPath": "Amazon.DroneDelivery",
+        "description": "Amazon.DroneDelivery",
+        "peekOfCode": "def itemCanFit(d1, d2, weight, DP):\n  if d1 - weight >= 0 and DP[d1 - weight][d2]:\n    return True\n  if d2 - weight >= 0 and DP[d1][d2 - weight]:\n    return True\n  return False\ndef droneDelivery(capacity1, capacity2, weights):\n  DP = []\n  for i in range(capacity1 + 1):\n    DP.append([0] * (capacity2 + 1))",
+        "detail": "Amazon.DroneDelivery",
+        "documentation": {}
+    },
+    {
+        "label": "droneDelivery",
+        "kind": 2,
+        "importPath": "Amazon.DroneDelivery",
+        "description": "Amazon.DroneDelivery",
+        "peekOfCode": "def droneDelivery(capacity1, capacity2, weights):\n  DP = []\n  for i in range(capacity1 + 1):\n    DP.append([0] * (capacity2 + 1))\n  DP[0][0] = 1\n  for weight in weights:\n    for d1 in range(capacity1, -1, -1):\n      for d2 in range(capacity2, -1, -1):\n        if itemCanFit(d1, d2, weight, DP):\n          DP[d1][d2] = 1",
+        "detail": "Amazon.DroneDelivery",
+        "documentation": {}
+    },
+    {
+        "label": "currentdir",
+        "kind": 5,
+        "importPath": "Amazon.DroneDelivery",
+        "description": "Amazon.DroneDelivery",
+        "peekOfCode": "currentdir = os.path.dirname(os.path.realpath(__file__))\nparentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom _utils import printMatrix\ndef itemCanFit(d1, d2, weight, DP):\n  if d1 - weight >= 0 and DP[d1 - weight][d2]:\n    return True\n  if d2 - weight >= 0 and DP[d1][d2 - weight]:\n    return True\n  return False",
+        "detail": "Amazon.DroneDelivery",
+        "documentation": {}
+    },
+    {
+        "label": "parentdir",
+        "kind": 5,
+        "importPath": "Amazon.DroneDelivery",
+        "description": "Amazon.DroneDelivery",
+        "peekOfCode": "parentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom _utils import printMatrix\ndef itemCanFit(d1, d2, weight, DP):\n  if d1 - weight >= 0 and DP[d1 - weight][d2]:\n    return True\n  if d2 - weight >= 0 and DP[d1][d2 - weight]:\n    return True\n  return False\ndef droneDelivery(capacity1, capacity2, weights):",
+        "detail": "Amazon.DroneDelivery",
+        "documentation": {}
+    },
+    {
+        "label": "Node",
+        "kind": 6,
+        "importPath": "Amazon.KMostPopularCombos",
+        "description": "Amazon.KMostPopularCombos",
+        "peekOfCode": "class Node(object):\n  def __init__(self, val) -> None:\n    self.val = val\n  def __repr__(self):\n    return f'Node value: {self.val}'\n  def __lt__(self, other):\n    return self.val < other.val\ndef kMostPopular(n, popularity, k):\n  heap = []\n  def backtrack(index, sum):",
+        "detail": "Amazon.KMostPopularCombos",
+        "documentation": {}
+    },
+    {
+        "label": "kMostPopular",
+        "kind": 2,
+        "importPath": "Amazon.KMostPopularCombos",
+        "description": "Amazon.KMostPopularCombos",
+        "peekOfCode": "def kMostPopular(n, popularity, k):\n  heap = []\n  def backtrack(index, sum):\n    if index == n:\n      print(len(heap))\n      if len(heap) < k: \n        heapq.heappush(heap, Node(sum))\n      else:\n        if sum > heap[0].val:\n          heapq.heappop(heap)",
+        "detail": "Amazon.KMostPopularCombos",
+        "documentation": {}
+    },
+    {
+        "label": "longestSubarrayBruteForce",
+        "kind": 2,
+        "importPath": "Amazon.LongestContiguousSubarrayWithAbsoluteDIffLessThanOrEqualToLimit",
+        "description": "Amazon.LongestContiguousSubarrayWithAbsoluteDIffLessThanOrEqualToLimit",
+        "peekOfCode": "def longestSubarrayBruteForce(nums, limit):\n  n = len(nums)\n  maxLen = 0\n  for i in range(n):\n    maxVal = nums[i]\n    minVal = nums[i]\n    for j in range(i, n):\n      maxVal = max(maxVal, nums[j])\n      minVal = min(minVal, nums[j])\n      diff = abs(maxVal - minVal)",
+        "detail": "Amazon.LongestContiguousSubarrayWithAbsoluteDIffLessThanOrEqualToLimit",
+        "documentation": {}
+    },
+    {
+        "label": "longestSubarray",
+        "kind": 2,
+        "importPath": "Amazon.LongestContiguousSubarrayWithAbsoluteDIffLessThanOrEqualToLimit",
+        "description": "Amazon.LongestContiguousSubarrayWithAbsoluteDIffLessThanOrEqualToLimit",
+        "peekOfCode": "def longestSubarray(nums, limit):\n  maxQ = []\n  minQ = []\n  getQFront = lambda Q: nums[Q[0]]\n  getQLast  = lambda Q: nums[Q[-1]]\n  getQDiffs = lambda  : abs(getQFront(maxQ) - getQFront(minQ))\n  maxLen = 0\n  L = 0\n  R = 0\n  while R < len(nums):",
+        "detail": "Amazon.LongestContiguousSubarrayWithAbsoluteDIffLessThanOrEqualToLimit",
+        "documentation": {}
+    },
+    {
+        "label": "maxCost",
+        "kind": 2,
+        "importPath": "Amazon.MaximumCostOfShipping",
+        "description": "Amazon.MaximumCostOfShipping",
+        "peekOfCode": "def maxCost(parcels, k):\n  parcelSet = set(parcels)\n  k -= len(parcels)\n  cost = 0\n  i = 1\n  while k > 0:\n    if i not in parcelSet:\n      cost += i\n      k -= 1\n    i += 1",
+        "detail": "Amazon.MaximumCostOfShipping",
+        "documentation": {}
+    },
+    {
+        "label": "maxNumberOfTeams",
+        "kind": 2,
+        "importPath": "Amazon.MaxNumberOfTeams",
+        "description": "Amazon.MaxNumberOfTeams",
+        "peekOfCode": "def maxNumberOfTeams(skills, teamSize, maxDiff):\n  skills.sort()\n  teamCount = 0\n  i = 0\n  while i <= len(skills) - teamSize:\n    min = skills[i]\n    max = skills[i + teamSize - 1]\n    if (max - min > maxDiff):\n      i += 1\n    else:",
+        "detail": "Amazon.MaxNumberOfTeams",
+        "documentation": {}
+    },
+    {
+        "label": "maxDistance",
+        "kind": 2,
+        "importPath": "Amazon.MaxTravelDistance",
+        "description": "Amazon.MaxTravelDistance",
+        "peekOfCode": "def maxDistance(forward, backward, maxDistance):\n  forward.sort(key=lambda x: x[1], reverse=True)\n  backward.sort(key=lambda x: x[1])\n  result = [-1, -1]\n  max = 0\n  f = 0\n  b = 0\n  while f < len(forward) and b < len(backward):\n    Fid, Fdistance = forward[f]\n    Bid, Bdistance = backward[b]",
+        "detail": "Amazon.MaxTravelDistance",
+        "documentation": {}
+    },
+    {
+        "label": "minChangesRef",
+        "kind": 2,
+        "importPath": "Amazon.MinimumChangesToConvertToNonIncreasing",
+        "description": "Amazon.MinimumChangesToConvertToNonIncreasing",
+        "peekOfCode": "def minChangesRef(nums):\n  pq = []\n  pqTop = lambda: pq[0]\n  n = len(nums)\n  s = 0\n  for i in range(n):\n    val = nums[i]\n    if pq and pqTop() < val:\n      s += (val - pqTop())\n      heapq.heappush(pq, val)",
+        "detail": "Amazon.MinimumChangesToConvertToNonIncreasing",
+        "documentation": {}
+    },
+    {
+        "label": "minChanges",
+        "kind": 2,
+        "importPath": "Amazon.MinimumChangesToConvertToNonIncreasing",
+        "description": "Amazon.MinimumChangesToConvertToNonIncreasing",
+        "peekOfCode": "def minChanges(nums):\n  pq = []\n  switches = 0\n  for num in nums:\n    if pq and num > pq[0]:\n      switches += (num - pq[0])\n      heapq.heappop(pq)\n      heapq.heappush(pq, num)\n    heapq.heappush(pq, num)\n    print(pq)",
+        "detail": "Amazon.MinimumChangesToConvertToNonIncreasing",
+        "documentation": {}
+    },
+    {
+        "label": "minCost",
+        "kind": 2,
+        "importPath": "Amazon.MinimumCostToConnectSticks",
+        "description": "Amazon.MinimumCostToConnectSticks",
+        "peekOfCode": "def minCost(sticks):\n  cost = 0\n  heapq.heapify(sticks)\n  while len(sticks) > 1:\n    stick1 = heapq.heappop(sticks)\n    stick2 = heapq.heappop(sticks)\n    combined = stick1 + stick2\n    cost += combined\n    heapq.heappush(sticks, combined)\n  return cost",
+        "detail": "Amazon.MinimumCostToConnectSticks",
+        "documentation": {}
+    },
+    {
+        "label": "minInterval",
+        "kind": 2,
+        "importPath": "Amazon.MinimumIntervalToIncludEachQuery",
+        "description": "Amazon.MinimumIntervalToIncludEachQuery",
+        "peekOfCode": "def minInterval(intervals, queries):\n  def compare(x, y):\n     return x[1] - y[1]\n  intervals.sort(key=lambda x:x[0])\n  print(intervals)\nminInterval([[2, 3], [1,4],[2,4],[3,6],[4,4]], [2,3,4,5])",
+        "detail": "Amazon.MinimumIntervalToIncludEachQuery",
+        "documentation": {}
+    },
+    {
+        "label": "longestSubarray",
+        "kind": 2,
+        "importPath": "Amazon.MinimumSubarray",
+        "description": "Amazon.MinimumSubarray",
+        "peekOfCode": "def longestSubarray(nums, limit):\n  maxQ = []\n  minQ = []\n  getQLast  = lambda Q: nums[Q[-1]]\n  getQFirst = lambda Q: nums[Q[0]]\n  getDiff   = lambda  : getQFirst(maxQ) - getQFirst(minQ)\n  L = 0\n  R = 0\n  maxLen = 0\n  while R < len(nums):",
+        "detail": "Amazon.MinimumSubarray",
+        "documentation": {}
+    },
+    {
+        "label": "getSubstrCount",
+        "kind": 2,
+        "importPath": "Amazon.PasswordStrength",
+        "description": "Amazon.PasswordStrength",
+        "peekOfCode": "def getSubstrCount(n):\n  return (n * (n + 1)) / 2\ndef getSegmentCounts(char, str):\n  segmentsTotal = 0\n  segmentLen = 0\n  for i in range(len(str)):\n    curr = str[i]\n    if curr == char:\n      segmentsTotal += getSubstrCount(segmentLen)\n      segmentLen = 0",
+        "detail": "Amazon.PasswordStrength",
+        "documentation": {}
+    },
+    {
+        "label": "getSegmentCounts",
+        "kind": 2,
+        "importPath": "Amazon.PasswordStrength",
+        "description": "Amazon.PasswordStrength",
+        "peekOfCode": "def getSegmentCounts(char, str):\n  segmentsTotal = 0\n  segmentLen = 0\n  for i in range(len(str)):\n    curr = str[i]\n    if curr == char:\n      segmentsTotal += getSubstrCount(segmentLen)\n      segmentLen = 0\n    else:\n      segmentLen += 1",
+        "detail": "Amazon.PasswordStrength",
+        "documentation": {}
+    },
+    {
+        "label": "passwordStrength",
+        "kind": 2,
+        "importPath": "Amazon.PasswordStrength",
+        "description": "Amazon.PasswordStrength",
+        "peekOfCode": "def passwordStrength(str):\n  totalSubstrings = getSubstrCount(len(str))\n  total = 0\n  for char in string.ascii_lowercase:\n    if char not in str: continue\n    total += (totalSubstrings - getSegmentCounts(char, str))\n  return total\nprint(passwordStrength('aba'))",
+        "detail": "Amazon.PasswordStrength",
+        "documentation": {}
+    },
+    {
+        "label": "powerConsumption",
+        "kind": 2,
+        "importPath": "Amazon.PowerConsumption",
+        "description": "Amazon.PowerConsumption",
+        "peekOfCode": "def powerConsumption(bootingPower, processingPower, powerMax):\n  maxQ = []\n  getMaxQVal = lambda: bootingPower[maxQ[0]]\n  getMaxQEnd = lambda: bootingPower[maxQ[-1]]\n  result = 0\n  n = len(bootingPower)\n  k = 1\n  while k <= n:\n    windowSum = 0\n    L = 0",
+        "detail": "Amazon.PowerConsumption",
+        "documentation": {}
+    },
+    {
+        "label": "reorderLogs",
+        "kind": 2,
+        "importPath": "Amazon.ReorderDataInLogFiles",
+        "description": "Amazon.ReorderDataInLogFiles",
+        "peekOfCode": "def reorderLogs(logs):\n  digLogs = []\n  letLogs = []\n  for log in logs:\n    word = log.split()[1]\n    if word.isnumeric(): digLogs.append(log)\n    else               : letLogs.append(log)\n  # Sort by identifier first\n  letLogs.sort(key = lambda log: log.split()[0])\n  # Sort by body",
+        "detail": "Amazon.ReorderDataInLogFiles",
+        "documentation": {}
+    },
+    {
+        "label": "robotBoundedInCircle",
+        "kind": 2,
+        "importPath": "Amazon.RobotBoundedInCircle",
+        "description": "Amazon.RobotBoundedInCircle",
+        "peekOfCode": "def robotBoundedInCircle(instructions):\n  dirX, dirY = 0, 1\n  x, y = 0, 0\n  for d in instructions:\n    if d == 'G':\n      x, y = x + dirX, y + dirY \n    elif d == 'L':\n      dirX, dirY = (dirY * -1), dirX\n    elif d == 'R':\n      dirX, dirY = dirY, (dirX * -1)",
+        "detail": "Amazon.RobotBoundedInCircle",
+        "documentation": {}
+    },
+    {
+        "label": "buildTrie",
+        "kind": 2,
+        "importPath": "Amazon.SearchSuggestionSystem",
+        "description": "Amazon.SearchSuggestionSystem",
+        "peekOfCode": "def buildTrie(products):\n  trie = {'indexes': []}\n  for i, product in enumerate(products):\n    node = trie\n    node['indexes'].append(i)\n    for char in product:\n      if char not in node: node[char] = {'indexes': []}\n      node = node[char]\n      node['indexes'].append(i)    \n  return trie",
+        "detail": "Amazon.SearchSuggestionSystem",
+        "documentation": {}
+    },
+    {
+        "label": "suggestProducts",
+        "kind": 2,
+        "importPath": "Amazon.SearchSuggestionSystem",
+        "description": "Amazon.SearchSuggestionSystem",
+        "peekOfCode": "def suggestProducts(products, searchWord):\n  products.sort()\n  node = buildTrie(products)\n  invalid = False\n  result = []\n  for char in searchWord:\n    if char not in node or invalid == True:\n      invalid = True\n      result.append([])\n      continue",
+        "detail": "Amazon.SearchSuggestionSystem",
+        "documentation": {}
+    },
+    {
+        "label": "splitArraysRef",
+        "kind": 2,
+        "importPath": "Amazon.SplitArrayLargestSum",
+        "description": "Amazon.SplitArrayLargestSum",
+        "peekOfCode": "def splitArraysRef(nums, m):\n  L = min(nums)\n  R = sum(nums)\n  while L < R:\n    M = (L + R) // 2\n    total = 0\n    count = 0\n    print(L, M, R)\n    for num in nums:\n      total += num",
+        "detail": "Amazon.SplitArrayLargestSum",
+        "documentation": {}
+    },
+    {
+        "label": "splitArrays",
+        "kind": 2,
+        "importPath": "Amazon.SplitArrayLargestSum",
+        "description": "Amazon.SplitArrayLargestSum",
+        "peekOfCode": "def splitArrays(nums, m):\n  L = max(nums)\n  R = sum(nums)\n  while L < R:\n    M = (L + R + 1)//2\n    total = 0\n    count = 0\n    print(L, M, R)\n    for num in nums:\n      total += num",
+        "detail": "Amazon.SplitArrayLargestSum",
+        "documentation": {}
+    },
+    {
+        "label": "buildLeftBoundary",
+        "kind": 2,
+        "importPath": "Amazon.StudentRanks",
+        "description": "Amazon.StudentRanks",
+        "peekOfCode": "def buildLeftBoundary(ranks, n):\n  LBoundary = [-1] * n\n  dict = {}\n  for i in range(n):\n    rank = ranks[i]\n    if (rank + 1) in dict: LBoundary[i] = dict[rank + 1]\n    dict[rank] = i\n  return LBoundary\ndef buildRightBoundary(ranks, n):\n  RBoundary = [n] * n",
+        "detail": "Amazon.StudentRanks",
+        "documentation": {}
+    },
+    {
+        "label": "buildRightBoundary",
+        "kind": 2,
+        "importPath": "Amazon.StudentRanks",
+        "description": "Amazon.StudentRanks",
+        "peekOfCode": "def buildRightBoundary(ranks, n):\n  RBoundary = [n] * n\n  dict = {}\n  for i in range(n - 1, -1, -1):\n    rank = ranks[i]\n    if (rank + 1) in dict: RBoundary[i] = dict[rank + 1]\n    dict[rank] = i\n  return RBoundary\ndef buildLeftNGE(ranks, n):\n  LeftNGE = [-1] * n",
+        "detail": "Amazon.StudentRanks",
+        "documentation": {}
+    },
+    {
+        "label": "buildLeftNGE",
+        "kind": 2,
+        "importPath": "Amazon.StudentRanks",
+        "description": "Amazon.StudentRanks",
+        "peekOfCode": "def buildLeftNGE(ranks, n):\n  LeftNGE = [-1] * n\n  stack = []\n  for i in range(n):\n    rank = ranks[i]\n    while stack and rank > ranks[stack[-1]]: stack.pop()\n    if stack: LeftNGE[i] = stack[-1]\n    stack.append(i)\n  return LeftNGE\ndef buildRightNGE(ranks, n):",
+        "detail": "Amazon.StudentRanks",
+        "documentation": {}
+    },
+    {
+        "label": "buildRightNGE",
+        "kind": 2,
+        "importPath": "Amazon.StudentRanks",
+        "description": "Amazon.StudentRanks",
+        "peekOfCode": "def buildRightNGE(ranks, n):\n  RightNGE = [n] * n\n  stack = []\n  for i in range(n - 1, -1, -1):\n    rank = ranks[i]\n    while stack and rank > ranks[stack[-1]]: stack.pop()\n    if stack: RightNGE[i] = stack[-1]\n    stack.append(i)\n  return RightNGE\ndef printData(LBoundary, RBoundary, NGELeft, NGERight):",
+        "detail": "Amazon.StudentRanks",
+        "documentation": {}
+    },
+    {
+        "label": "printData",
+        "kind": 2,
+        "importPath": "Amazon.StudentRanks",
+        "description": "Amazon.StudentRanks",
+        "peekOfCode": "def printData(LBoundary, RBoundary, NGELeft, NGERight):\n  print(LBoundary)\n  print(RBoundary)\n  print(NGELeft)\n  print(NGERight)\ndef studentRanks(ranks):\n  n = len(ranks)\n  LBoundary = buildLeftBoundary(ranks, n)\n  RBoundary = buildRightBoundary(ranks, n)\n  NGELeft = buildLeftNGE(ranks, n)",
+        "detail": "Amazon.StudentRanks",
+        "documentation": {}
+    },
+    {
+        "label": "studentRanks",
+        "kind": 2,
+        "importPath": "Amazon.StudentRanks",
+        "description": "Amazon.StudentRanks",
+        "peekOfCode": "def studentRanks(ranks):\n  n = len(ranks)\n  LBoundary = buildLeftBoundary(ranks, n)\n  RBoundary = buildRightBoundary(ranks, n)\n  NGELeft = buildLeftNGE(ranks, n)\n  NGERight = buildRightNGE(ranks, n)\n  printData(LBoundary, RBoundary, NGELeft, NGERight)\n  result = 0\n  for i in range(n):\n    countOfStart    = i - LBoundary[i]",
+        "detail": "Amazon.StudentRanks",
+        "documentation": {}
+    },
+    {
+        "label": "buildPLE",
+        "kind": 2,
+        "importPath": "Amazon.SumOfSubarrayMinimums",
+        "description": "Amazon.SumOfSubarrayMinimums",
+        "peekOfCode": "def buildPLE(nums, n):\n  stack = []\n  PLE = [-1]  * n\n  for i in range(n):\n    curr = nums[i]\n    while stack and curr < nums[stack[-1]]: stack.pop()    \n    PLE[i] = (i - stack[-1]) if stack else (i + 1)\n    stack.append(i)\n  return PLE\ndef buildNLE(nums, n):",
+        "detail": "Amazon.SumOfSubarrayMinimums",
+        "documentation": {}
+    },
+    {
+        "label": "buildNLE",
+        "kind": 2,
+        "importPath": "Amazon.SumOfSubarrayMinimums",
+        "description": "Amazon.SumOfSubarrayMinimums",
+        "peekOfCode": "def buildNLE(nums, n):\n  stack = []\n  count = 1\n  NLE = [n] * n\n  for i in range(n - 1, -1, -1):\n    curr = nums[i]\n    while stack and curr <= nums[stack[-1]]: stack.pop()\n    NLE[i] = (stack[-1] - i) if stack else (count)\n    stack.append(i)\n    count += 1",
+        "detail": "Amazon.SumOfSubarrayMinimums",
+        "documentation": {}
+    },
+    {
+        "label": "sumofSubarrayMinimums",
+        "kind": 2,
+        "importPath": "Amazon.SumOfSubarrayMinimums",
+        "description": "Amazon.SumOfSubarrayMinimums",
+        "peekOfCode": "def sumofSubarrayMinimums(nums):\n  n = len(nums)\n  PLE = buildPLE(nums, n)\n  NLE = buildNLE(nums, n)\n  print(PLE)\n  print(NLE)\n  totalSum = 0\n  for i in range(n):\n    totalSubarrays = PLE[i] * NLE[i]\n    totalValue = nums[i] * totalSubarrays",
+        "detail": "Amazon.SumOfSubarrayMinimums",
+        "documentation": {}
+    },
+    {
+        "label": "printAll",
+        "kind": 2,
+        "importPath": "Amazon.SumOfSubarrayRanges",
+        "description": "Amazon.SumOfSubarrayRanges",
+        "peekOfCode": "def printAll(arr, PLE, NLE, PGE, NGE):\n  print('arr')\n  print(arr)\n  print('PLE')\n  print(PLE)\n  print('NLE')\n  print(NLE)\n  print('PGE')\n  print(PGE)\n  print('NGE')",
+        "detail": "Amazon.SumOfSubarrayRanges",
+        "documentation": {}
+    },
+    {
+        "label": "sumOfSubarrayRanges",
+        "kind": 2,
+        "importPath": "Amazon.SumOfSubarrayRanges",
+        "description": "Amazon.SumOfSubarrayRanges",
+        "peekOfCode": "def sumOfSubarrayRanges(arr):\n  getStackTop = lambda st: arr[st[-1]]\n  n = len(arr)\n  NGE = [-1] * n\n  PGE = [-1] * n\n  NLE = [-1] * n\n  PLE = [-1] * n\n  st = []\n  for i in range(n):\n      while st and getStackTop(st) > arr[i]:",
+        "detail": "Amazon.SumOfSubarrayRanges",
+        "documentation": {}
+    },
+    {
+        "label": "throttlingGateway",
+        "kind": 2,
+        "importPath": "Amazon.ThrottlingGateway",
+        "description": "Amazon.ThrottlingGateway",
+        "peekOfCode": "def throttlingGateway(requestTimes):\n  dropped = 0\n  passed = []\n  for i in range(len(requestTimes)):\n    currTime = requestTimes[i]\n    if   i > 2  and currTime == requestTimes[i - 3]:\n      dropped += 1\n    elif i > 19 and currTime - requestTimes[i - 20] < 10:\n      dropped += 1\n    elif i > 59 and currTime - requestTimes[i - 60] < 60:",
+        "detail": "Amazon.ThrottlingGateway",
+        "documentation": {}
+    },
+    {
+        "label": "throttling_gateway",
+        "kind": 2,
+        "importPath": "Amazon.ThrottlingGateway",
+        "description": "Amazon.ThrottlingGateway",
+        "peekOfCode": "def throttling_gateway(requestTime):\n  \"\"\"\n  :type n: int\n  :type requestTime: int\n  :rtype: int\n  \"\"\"\n  pair_value_list = [(1, 3), (10, 20), (60, 60)]\n  unique_value_dict = set()\n  count_value_dict = collections.Counter(requestTime)\n  max_length = max(requestTime)",
+        "detail": "Amazon.ThrottlingGateway",
+        "documentation": {}
+    },
+    {
+        "label": "verticalOrder",
+        "kind": 2,
+        "importPath": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "description": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "peekOfCode": "def verticalOrder(root):\n  if root is None: return root\n  colDict = {}\n  queue = [(root, 0)]\n  count = 1\n  while queue:\n    while count > 0:\n      node, col = queue.pop(0)\n      if col not in colDict: colDict[col] = []\n      colDict[col].append(node.val)",
+        "detail": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "documentation": {}
+    },
+    {
+        "label": "buildTree",
+        "kind": 2,
+        "importPath": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "description": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "peekOfCode": "def buildTree():\n  t1 = TreeNode(3)\n  t1.left = TreeNode(9)\n  t1.right = TreeNode(8)\n  t1.left.left = TreeNode(4)\n  t1.left.right = TreeNode(0)\n  t1.right.left = TreeNode(1)\n  t1.right.right = TreeNode(7)\n  t1.left.right.right = TreeNode(2)\n  t1.right.left.left = TreeNode(5)",
+        "detail": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "documentation": {}
+    },
+    {
+        "label": "currentdir",
+        "kind": 5,
+        "importPath": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "description": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "peekOfCode": "currentdir = os.path.dirname(os.path.realpath(__file__))\nparentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom DataStrucutres import TreeNode\ndef verticalOrder(root):\n  if root is None: return root\n  colDict = {}\n  queue = [(root, 0)]\n  count = 1\n  while queue:",
+        "detail": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "documentation": {}
+    },
+    {
+        "label": "parentdir",
+        "kind": 5,
+        "importPath": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "description": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "peekOfCode": "parentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom DataStrucutres import TreeNode\ndef verticalOrder(root):\n  if root is None: return root\n  colDict = {}\n  queue = [(root, 0)]\n  count = 1\n  while queue:\n    while count > 0:",
+        "detail": "Facebook.BinaryTreeVerticalOrderTraversal",
+        "documentation": {}
+    },
+    {
+        "label": "findBuildings",
+        "kind": 2,
+        "importPath": "Facebook.BuildingsWithAnOceanView",
+        "description": "Facebook.BuildingsWithAnOceanView",
+        "peekOfCode": "def findBuildings(heights):\n  n = len(heights)\n  maxHeight = 0\n  result = []\n  for i in range(n - 1, -1, -1):\n    height = heights[i]\n    if height > maxHeight:\n      result.append(i)\n      maxHeight = height\n  result.reverse()",
+        "detail": "Facebook.BuildingsWithAnOceanView",
+        "documentation": {}
+    },
+    {
+        "label": "SparseVector",
+        "kind": 6,
+        "importPath": "Facebook.DotProductOfTwoSparseVectors",
+        "description": "Facebook.DotProductOfTwoSparseVectors",
+        "peekOfCode": "class SparseVector:\n  def __init__(self, nums) -> None:\n    self.indexToVal = {}\n    for i, num in enumerate(nums):\n      if num != 0: self.indexToVal[i] = num\n  def dotProduct(self, vec):\n    result = 0\n    Aindexes, Bindexes = self.indexToVal, vec.indexToVal\n    for i in Aindexes:\n      if i not in Bindexes: continue",
+        "detail": "Facebook.DotProductOfTwoSparseVectors",
+        "documentation": {}
+    },
+    {
+        "label": "v1",
+        "kind": 5,
+        "importPath": "Facebook.DotProductOfTwoSparseVectors",
+        "description": "Facebook.DotProductOfTwoSparseVectors",
+        "peekOfCode": "v1 = SparseVector([1,0,0,2,3])\nv2 = SparseVector([0,3,0,4,0])\nprint(v1.dotProduct(v2))",
+        "detail": "Facebook.DotProductOfTwoSparseVectors",
+        "documentation": {}
+    },
+    {
+        "label": "v2",
+        "kind": 5,
+        "importPath": "Facebook.DotProductOfTwoSparseVectors",
+        "description": "Facebook.DotProductOfTwoSparseVectors",
+        "peekOfCode": "v2 = SparseVector([0,3,0,4,0])\nprint(v1.dotProduct(v2))",
+        "detail": "Facebook.DotProductOfTwoSparseVectors",
+        "documentation": {}
+    },
+    {
+        "label": "getDepth",
+        "kind": 2,
+        "importPath": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "description": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "peekOfCode": "def getDepth(n):\n  count = 0\n  while n != None:\n    count += 1\n    n = n.parent\n  return count\ndef lowestCommonAncestor(p, q):\n  pDepth = getDepth(p)\n  qDepth = getDepth(q)\n  while pDepth != qDepth:",
+        "detail": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "documentation": {}
+    },
+    {
+        "label": "lowestCommonAncestor",
+        "kind": 2,
+        "importPath": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "description": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "peekOfCode": "def lowestCommonAncestor(p, q):\n  pDepth = getDepth(p)\n  qDepth = getDepth(q)\n  while pDepth != qDepth:\n    if pDepth < qDepth:\n      qDepth -= 1\n      q = q.parent\n    if pDepth > qDepth:\n      pDepth -= 1\n      p = p.parent",
+        "detail": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "documentation": {}
+    },
+    {
+        "label": "buildTree",
+        "kind": 2,
+        "importPath": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "description": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "peekOfCode": "def buildTree():\n  t = TreeNode(3)\n  t.L = TreeNode(5)\n  t.L.parent = t\n  t.R = TreeNode(1)\n  t.R.parent = t\n  t.L.L = TreeNode(6)\n  t.L.R = TreeNode(2)\n  t.L.L.parent = t.L\n  t.L.R.parent = t.L",
+        "detail": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "documentation": {}
+    },
+    {
+        "label": "currentdir",
+        "kind": 5,
+        "importPath": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "description": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "peekOfCode": "currentdir = os.path.dirname(os.path.realpath(__file__))\nparentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom DataStrucutres import TreeNode\ndef getDepth(n):\n  count = 0\n  while n != None:\n    count += 1\n    n = n.parent\n  return count",
+        "detail": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "documentation": {}
+    },
+    {
+        "label": "parentdir",
+        "kind": 5,
+        "importPath": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "description": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "peekOfCode": "parentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\nfrom DataStrucutres import TreeNode\ndef getDepth(n):\n  count = 0\n  while n != None:\n    count += 1\n    n = n.parent\n  return count\ndef lowestCommonAncestor(p, q):",
+        "detail": "Facebook.LowestCommonAncestorOfBinaryTree3",
+        "documentation": {}
+    },
+    {
+        "label": "minRemoves",
+        "kind": 2,
+        "importPath": "Facebook.MinimumRemoveToMakeValidParentheses",
+        "description": "Facebook.MinimumRemoveToMakeValidParentheses",
+        "peekOfCode": "def minRemoves(s):\n  arr = list(s)\n  stack = []\n  for i, char in enumerate(arr):\n    if char == ')':\n      if len(stack) == 0: arr[i] = ''\n      else              : stack.pop()\n    if char == '(': \n      stack.append(i)\n  while len(stack) > 0: arr[stack.pop()] = ''",
+        "detail": "Facebook.MinimumRemoveToMakeValidParentheses",
+        "documentation": {}
+    },
+    {
+        "label": "Solution",
+        "kind": 6,
+        "importPath": "Facebook.RandomPickWithWeight",
+        "description": "Facebook.RandomPickWithWeight",
+        "peekOfCode": "class Solution:\n  def __init__(self, w):\n    sums = []\n    currSum = 0\n    for weight in w:\n      currSum += weight\n      sums.append(currSum)\n    print(sums)\n  def pickIndex(self):\n    pass",
+        "detail": "Facebook.RandomPickWithWeight",
+        "documentation": {}
+    },
+    {
+        "label": "solution",
+        "kind": 5,
+        "importPath": "Facebook.RandomPickWithWeight",
+        "description": "Facebook.RandomPickWithWeight",
+        "peekOfCode": "solution = Solution([1, 3, 2, 4])",
+        "detail": "Facebook.RandomPickWithWeight",
+        "documentation": {}
+    },
+    {
+        "label": "checkValid",
+        "kind": 2,
+        "importPath": "Facebook.ValidPalindrome",
+        "description": "Facebook.ValidPalindrome",
+        "peekOfCode": "def checkValid(s, L, R):\n  while L < R:\n    if s[L] != s[R]: return False\n    L += 1\n    R -= 1\n  return True\ndef validPalindrome(s):\n  L, R = 0, len(s) - 1\n  while L < R:\n    if s[L] != s[R]:",
+        "detail": "Facebook.ValidPalindrome",
+        "documentation": {}
+    },
+    {
+        "label": "validPalindrome",
+        "kind": 2,
+        "importPath": "Facebook.ValidPalindrome",
+        "description": "Facebook.ValidPalindrome",
+        "peekOfCode": "def validPalindrome(s):\n  L, R = 0, len(s) - 1\n  while L < R:\n    if s[L] != s[R]:\n      if checkValid(s, L + 1, R) == True: return True\n      if checkValid(s, L, R - 1) == True: return True\n      return False\n    L += 1\n    R -= 1\n  return True",
+        "detail": "Facebook.ValidPalindrome",
+        "documentation": {}
+    },
+    {
+        "label": "TreeNode",
+        "kind": 6,
+        "importPath": "DataStrucutres",
+        "description": "DataStrucutres",
+        "peekOfCode": "class TreeNode:\n  def __init__(self, val=0, left=None, right=None, parent=None):\n    self.val = val\n    self.left = left\n    self.right = right\n    self.parent = parent\n    self.L = left\n    self.R = right\n    self.P = parent",
+        "detail": "DataStrucutres",
+        "documentation": {}
+    },
+    {
+        "label": "Node",
+        "kind": 6,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "class Node(object):\n  def __init__(self, obj) -> None:\n    self.obj = obj\n  def __repr__(self):\n    return f'Node value: {self.obj}'\n  def __lt__(self, other: object):\n    if self.obj['val'] == other.obj['val']:\n      return self.obj['key'] < other.obj['key']\n    return self.obj['val'] < other.obj['val']\ndef priorityQueue():",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "listOfDicts",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def listOfDicts():\n  my_list = [{'name':'Homer', 'age':39}, {'name':'Bart', 'age':10}]\n  my_list.sort(key=lambda k : k['name'])\n  print(my_list)\n  my_list.sort(key=lambda k : k['name'], reverse=True)\n  print(my_list)\n  my_list.sort(key=lambda k : k['age'])\n  print(my_list)\n# listOfDicts()\ndef frequencyMap():",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "frequencyMap",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def frequencyMap():\n  myList = [2, 2, 3, 3, 2, 4, 4, 4, 4, 4]\n  map = {}\n  for num in myList:\n    map[num] = map.get(num, 0) + 1\n  print(map)\n# frequencyMap()\ndef mathFunctions():\n  print('--- Math Functions ---')\n  print('Math.floor of 3.5: ', math.floor(3.5))",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "mathFunctions",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def mathFunctions():\n  print('--- Math Functions ---')\n  print('Math.floor of 3.5: ', math.floor(3.5))\n  myList = [1,2,3]\n  print('myList: ', myList)\n  print('Sum of myList: ', sum(myList))\n  print('Length of myList: ', len(myList))\n  print('Absolute value abs(-5):', abs(-5))\n# mathFunctions()\ndef iterating():",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "iterating",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def iterating():\n  nums = [2,4,7,2,9]\n  # for num in nums:\n  #   print(num)\n  # for num in nums[1:]:\n  #   print(num)\n  # range(start, stop, step)\n  # start\tOptional. An integer number specifying at which position to start. Default is 0\n  # stop\tRequired. An integer number specifying at which position to stop (not included).\n  # step\tOptional. An integer number specifying the incrementation. Default is 1",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "priorityQueue",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def priorityQueue():\n  items = [\n    { 'val': 4, 'key': 4 },\n    { 'val': 3, 'key': 5 },\n    { 'val': 2, 'key': 2 },\n    { 'val': 2, 'key': 1 },\n    { 'val': 5, 'key': 2 },\n  ]\n  heap = []\n  for item in items:",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "dictionaries",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def dictionaries():\n  dict = {}\n  dict.update({'hi':'hello'})\n  dict.update({'hi2':'hello2'})\n  dict.update({1: 'test'})\n  if 1 in dict: print('yahoo')\n  print(dict)\n  print(dict.keys())\n  dictArr = {'indexes': []}\n  print(dictArr['indexes'])",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "sortDicts",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def sortDicts():\n  orders = {\n    'cappuccino': 54,\n    'latte': 56,\n    'espresso': 72,\n    'americano': 48,\n    'cortado': 41\n  }\n  sort_orders = sorted(orders.items(), key=lambda x: x[1], reverse=True)\n  print(sort_orders)",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "slicing",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def slicing():\n  a = ['abcdefgh', 'abcdefgh' , 'abcdefgh']\n  b = [1, 2, 3, 4, 5, 6, 7]\n  print(a[0][3:6])\n  print(b[2:4])\n  print(b[6:10])\n  testStr = 'badsrfeawd'\n  print(testStr[3:])\n# slicing()\ndef finding():",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "finding",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def finding():\n  string = 'dig1 8 1 5 1'\n  print(string.find('1'))\n  print(string.find('8 1'))\n# finding()\ndef compare(a, b):\n  aCode, bCode = a[0], b[0]\n  aFreq, bFreq = a[1]['frequency'], b[1]['frequency']\n  if aFreq == bFreq:\n    if aCode < bCode: return -1",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "compare",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def compare(a, b):\n  aCode, bCode = a[0], b[0]\n  aFreq, bFreq = a[1]['frequency'], b[1]['frequency']\n  if aFreq == bFreq:\n    if aCode < bCode: return -1\n    else            : return 1\n  return bFreq - aFreq\nsortedItems = sorted({'testItem': ['asdf']}, key=cmp_to_key(compare))\ndef mapFunction():\n  def addition(n):",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "mapFunction",
+        "kind": 2,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "def mapFunction():\n  def addition(n):\n      return n + n\n  # We double all numbers using map()\n  numbers = (1, 2, 3, 4)\n  result = map(addition, numbers)\n  print(list(result))\nmapFunction()",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "currentdir",
+        "kind": 5,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "currentdir = os.path.dirname(os.path.realpath(__file__))\nparentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\n# Allow subdirectories to import from parent\nfrom functools import cmp_to_key\nimport heapq\nimport math\ndef listOfDicts():\n  my_list = [{'name':'Homer', 'age':39}, {'name':'Bart', 'age':10}]\n  my_list.sort(key=lambda k : k['name'])",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "parentdir",
+        "kind": 5,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "parentdir = os.path.dirname(currentdir)\nsys.path.append(parentdir)\n# Allow subdirectories to import from parent\nfrom functools import cmp_to_key\nimport heapq\nimport math\ndef listOfDicts():\n  my_list = [{'name':'Homer', 'age':39}, {'name':'Bart', 'age':10}]\n  my_list.sort(key=lambda k : k['name'])\n  print(my_list)",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "sortedItems",
+        "kind": 5,
+        "importPath": "_PythonFundamentals",
+        "description": "_PythonFundamentals",
+        "peekOfCode": "sortedItems = sorted({'testItem': ['asdf']}, key=cmp_to_key(compare))\ndef mapFunction():\n  def addition(n):\n      return n + n\n  # We double all numbers using map()\n  numbers = (1, 2, 3, 4)\n  result = map(addition, numbers)\n  print(list(result))\nmapFunction()",
+        "detail": "_PythonFundamentals",
+        "documentation": {}
+    },
+    {
+        "label": "printMatrix",
+        "kind": 2,
+        "importPath": "_utils",
+        "description": "_utils",
+        "peekOfCode": "def printMatrix(matrix):\n  for i in matrix:\n    print('\\t'.join(map(str, i)))\ndef printDict(dict):\n  longestStr = max(dict.keys(), key=len)\n  maxLen = len(longestStr)\n  print('{')\n  for key in dict:\n    currLen = len(key)\n    lenDiff = maxLen - currLen",
+        "detail": "_utils",
+        "documentation": {}
+    },
+    {
+        "label": "printDict",
+        "kind": 2,
+        "importPath": "_utils",
+        "description": "_utils",
+        "peekOfCode": "def printDict(dict):\n  longestStr = max(dict.keys(), key=len)\n  maxLen = len(longestStr)\n  print('{')\n  for key in dict:\n    currLen = len(key)\n    lenDiff = maxLen - currLen\n    print('  ' + key + (' ' * lenDiff) + ': ' + str(dict[key]))\n  print('}')\ndef printVerticalList(list):",
+        "detail": "_utils",
+        "documentation": {}
+    },
+    {
+        "label": "printVerticalList",
+        "kind": 2,
+        "importPath": "_utils",
+        "description": "_utils",
+        "peekOfCode": "def printVerticalList(list):\n  for item in list:\n    print(item)",
+        "detail": "_utils",
+        "documentation": {}
+    }
+]
