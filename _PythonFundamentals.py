@@ -1,13 +1,31 @@
-# Allow subdirectories to import from parent
+from functools import cmp_to_key
+import heapq
+import math
+
+##################################################
+# ?Allow subdirectories to import from parent
+
 import os, sys
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
-# Allow subdirectories to import from parent
 
-from functools import cmp_to_key
-import heapq
-import math
+from DataStrucutres import TreeNode, ListNode
+
+##################################################
+# ?Template for Python Solutions
+
+class Solution:
+  def func(self, s):
+    pass
+  
+def runSolution():
+  solution = Solution()
+  print(solution.func())
+  pass
+runSolution()
+
+###################################################
 
 def listOfDicts():
   my_list = [{'name':'Homer', 'age':39}, {'name':'Bart', 'age':10}]

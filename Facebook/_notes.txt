@@ -5,3 +5,5 @@ Problems to practice on:
 2060. Check if an Original String Exists Given Two Encoded Strings
 282. Expression Add Operators
 273. Integer to English Words
+536. Construct Binary Tree from String
+1060. Missing Element in Sorted Array

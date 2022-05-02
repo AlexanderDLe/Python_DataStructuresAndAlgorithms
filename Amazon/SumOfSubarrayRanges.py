@@ -61,82 +61,87 @@
 
 '''
 
-def printAll(arr, PLE, NLE, PGE, NGE):
-  print('arr')
-  print(arr)
-  print('PLE')
-  print(PLE)
-  print('NLE')
-  print(NLE)
-  print('PGE')
-  print(PGE)
-  print('NGE')
-  print(NGE)
+class SolutionRef:
+  def printAll(self, arr, PLE, NLE, PGE, NGE):
+    print('arr')
+    print(arr)
+    print('PLE')
+    print(PLE)
+    print('NLE')
+    print(NLE)
+    print('PGE')
+    print(PGE)
+    print('NGE')
+    print(NGE)
 
-def sumOfSubarrayRanges(arr):
-  getStackTop = lambda st: arr[st[-1]]
+  def sumOfSubarrayRanges(self, arr):
+    getStackTop = lambda st: arr[st[-1]]
 
-  n = len(arr)
-  NGE = [-1] * n
-  PGE = [-1] * n
-  NLE = [-1] * n
-  PLE = [-1] * n
-  
-  st = []
-  for i in range(n):
-      while st and getStackTop(st) > arr[i]:
-          NLE[st[-1]] = i
-          st.pop()   
-      st.append(i)
-      
-  st = []
-  for i in range(n-1,-1,-1):
-      while st and getStackTop(st) >= arr[i]:
-          PLE[st[-1]] = i
-          st.pop()
-      st.append(i)
-      
-  st = []
-  for i in range(n):
-      while st and getStackTop(st) < arr[i]:
-          NGE[st[-1]] = i
-          st.pop()   
-      st.append(i)
-      
-  st = []
-  for i in range(n-1,-1,-1): 
-      while st and getStackTop(st) <= arr[i]:
-          PGE[st[-1]] = i
-          st.pop()
-      st.append(i)
-  
-  printAll(arr, PLE, NLE, PGE, NGE)
-  
-  minRes = 0  
-  for i in range(n):
-      if PLE[i] == -1: leftDiff = i
-      else           : leftDiff = (i - PLE[i]) - 1
-          
-      if NLE[i] == -1: rightDiff = n - 1 - i
-      else           : rightDiff = (NLE[i] - i) - 1
-      
-      print(f'arr[i]: {arr[i]} | leftDiff: {leftDiff} | rightDiff: {rightDiff} | ', arr[i] * (leftDiff + 1) * (rightDiff + 1))
-      minRes += arr[i] * (leftDiff + 1) * (rightDiff + 1)
-  print(f'minRes: {minRes}')
+    n = len(arr)
+    NGE = [-1] * n
+    PGE = [-1] * n
+    NLE = [-1] * n
+    PLE = [-1] * n
+    
+    st = []
+    for i in range(n):
+        while st and getStackTop(st) > arr[i]:
+            NLE[st[-1]] = i
+            st.pop()   
+        st.append(i)
+        
+    st = []
+    for i in range(n-1,-1,-1):
+        while st and getStackTop(st) >= arr[i]:
+            PLE[st[-1]] = i
+            st.pop()
+        st.append(i)
+        
+    st = []
+    for i in range(n):
+        while st and getStackTop(st) < arr[i]:
+            NGE[st[-1]] = i
+            st.pop()   
+        st.append(i)
+        
+    st = []
+    for i in range(n-1,-1,-1): 
+        while st and getStackTop(st) <= arr[i]:
+            PGE[st[-1]] = i
+            st.pop()
+        st.append(i)
+    
+    self.printAll(arr, PLE, NLE, PGE, NGE)
+    
+    minRes = 0  
+    for i in range(n):
+        if PLE[i] == -1: leftDiff = i
+        else           : leftDiff = (i - PLE[i]) - 1
+            
+        if NLE[i] == -1: rightDiff = n - 1 - i
+        else           : rightDiff = (NLE[i] - i) - 1
+        
+        print(f'arr[i]: {arr[i]} | leftDiff: {leftDiff} | rightDiff: {rightDiff} | ', arr[i] * (leftDiff + 1) * (rightDiff + 1))
+        minRes += arr[i] * (leftDiff + 1) * (rightDiff + 1)
+    print(f'minRes: {minRes}')
 
-  maxRes = 0
-  for i in range(n):
-      if PGE[i] == -1: leftDiff = i
-      else           : leftDiff = (i - PGE[i]) - 1
-          
-      if NGE[i] == -1: rightDiff = n - 1 - i
-      else           : rightDiff = (NGE[i] - i) - 1
-      
-      maxRes += arr[i] * (leftDiff + 1) * (rightDiff + 1)
-      
-  return maxRes - minRes
-
-
+    maxRes = 0
+    for i in range(n):
+        if PGE[i] == -1: leftDiff = i
+        else           : leftDiff = (i - PGE[i]) - 1
+            
+        if NGE[i] == -1: rightDiff = n - 1 - i
+        else           : rightDiff = (NGE[i] - i) - 1
+        
+        maxRes += arr[i] * (leftDiff + 1) * (rightDiff + 1)
+        
+    return maxRes - minRes
 
 
-print(sumOfSubarrayRanges([5, 1, 3, 2, 4]))
+
+
+def runSolution():
+  solution = SolutionRef()
+  print(solution.sumOfSubarrayRanges([1,2,3]))
+  pass
+runSolution()

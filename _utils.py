@@ -26,3 +26,15 @@ def printLinkedList(node):
     node = node.next
 
   print(result)
+
+def preorderTraversal(root):
+  res = []
+  def DFS(n):
+    if n == None: return
+    res.append(n.val)
+
+    DFS(n.left)
+    DFS(n.right)
+    
+  DFS(root)
+  print(res)

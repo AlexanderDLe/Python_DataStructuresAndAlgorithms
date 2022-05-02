@@ -6,44 +6,43 @@
 
 from functools import cache
 
-def allPossibleWildcardLengths(nums, carryover = 0, options = set()):
-  if len(nums) == 0: return
-
-  print(f'carryover: {carryover} | nums: ', nums)
-  for x in range(1, len(nums) + 1):
-      prefix = int(''.join(nums[:x]))
-      print(f'prefix: {prefix}')
-
-      if x == len(nums): 
-        options.add(carryover + prefix)
-        print(f'carryover + pint: {carryover} + {prefix} = {carryover + prefix}')
-        print('options', options)
-      else: 
-        print(f'carryover + prefix: {carryover} + {prefix} = {carryover + prefix}')
-        allPossibleWildcardLengths(nums[x:], carryover + prefix, options)
-
-  return options
-
-def parse(string):
-  res = []
-  numbers = []
-
-  for c in string:
-    if c.isdigit(): numbers.append(c)
-    else:
-      if numbers:
-        res.append(allPossibleWildcardLengths(numbers, 0, set()))
-        numbers = []
-      res.append(c)
-
-  if numbers:
-    res.append(allPossibleWildcardLengths(numbers, 0, set()))
-
-  return res
 
 def possiblyEquals(s1, s2):
+  def allPossibleWildcardLengths(nums, carryover = 0, options = set()):
+    if len(nums) == 0: return
+
+    for x in range(1, len(nums) + 1):
+        prefix = int(''.join(nums[:x]))
+
+        if x == len(nums): 
+          options.add(carryover + prefix)
+        else: 
+          allPossibleWildcardLengths(nums[x:], carryover + prefix, options)
+
+    return options
+  
+  def parse(string):
+    res = []
+    numbers = []
+
+    for c in string:
+      if c.isdigit(): numbers.append(c)
+      else:
+        if numbers:
+          res.append(allPossibleWildcardLengths(numbers, 0, set()))
+          numbers = []
+        res.append(c)
+
+    if numbers:
+      res.append(allPossibleWildcardLengths(numbers, 0, set()))
+
+    return res
+  
   repr1, repr2 = parse(s1), parse(s2)
   len1, len2 = len(repr1), len(repr2)
+
+  print(repr1)
+  print(repr2)
 
   @cache
   def DFS(i, j, diff):

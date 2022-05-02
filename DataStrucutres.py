@@ -7,6 +7,9 @@ class TreeNode:
     self.L = left
     self.R = right
     self.P = parent
+    
+  def __repr__(self):
+    return f'Node:{self.val}'
 
 
 class ListNode:
@@ -18,3 +21,14 @@ class ListNode:
     self.prev = left
     self.next = right
     self.random = None
+    
+    
+def createList(arr):
+  head = ListNode(arr[0])
+  curr = head
+  
+  for i in range(1, len(arr)):
+    curr.next = ListNode(arr[i])
+    curr = curr.next
+  
+  return head

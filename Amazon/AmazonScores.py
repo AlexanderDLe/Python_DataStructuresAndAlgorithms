@@ -59,12 +59,20 @@
 
   rank 1
 
+  -------------------------------------------------------------------------------
+
+    15   10   10   7   7   5   3
+                 ^
+
+    rank = 2
+    lvls = 3
+    
 '''
 
 import heapq
 import math
 
-def scoring(scores, cutOffRank, num):
+def scoringRef(scores, cutOffRank, num):
   scores.sort(reverse = True)
   print(scores)
 
@@ -77,18 +85,31 @@ def scoring(scores, cutOffRank, num):
     if rank >= cutOffRank: break
 
     lvls += 1
-    if score is not prev: rank += 1
+    if score is not prev: 
+      rank += 1
+      prev = score
 
   return lvls
 
-'''
-  15   10   10   7   7   5   3
-                 ^
-
-  rank = 2
-  lvls = 3
-
-'''
+def scoring(scores, cutOffRank, num):
+  scores.sort(reverse=True)
+  print(scores)
+  
+  prev = float('inf')
+  rank = 0
+  lvls = 0
+  
+  for score in scores:
+    if score == 0: break
+    
+    if score != prev:
+      prev = score
+      rank += 1
+      if rank > cutOffRank: break
+    
+    lvls += 1
+    
+  return lvls
 
 
 print(scoring([10, 10, 15, 7, 7, 5, 3], 3, 7))
