@@ -1,6 +1,7 @@
 from functools import cmp_to_key
 import heapq
 import math
+from operator import itemgetter
 
 ##################################################
 # ?Allow subdirectories to import from parent
@@ -9,7 +10,7 @@ import os, sys
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
-
+from _utils import *
 from DataStrucutres import TreeNode, ListNode
 
 ##################################################
@@ -21,7 +22,7 @@ class Solution:
   
 def runSolution():
   solution = Solution()
-  print(solution.func())
+  print(solution.func('s'))
   pass
 runSolution()
 
@@ -156,7 +157,7 @@ def sortDicts():
   }
   sort_orders = sorted(orders.items(), key=lambda x: x[1], reverse=True)
   print(sort_orders)
-sortDicts()
+# sortDicts()
 
 def slicing():
   a = ['abcdefgh', 'abcdefgh' , 'abcdefgh']
@@ -196,4 +197,19 @@ def mapFunction():
   result = map(addition, numbers)
   print(list(result))
 
-mapFunction()
+# mapFunction()
+
+
+
+def mySortTester():
+  myList = [(2, 'i'), (1, 'hi'), (2, 'heya'), (2, 'hello'), (1, 'bye'), (3, 'cya')]
+  print('Given list.')
+  print(myList)
+  myList.sort(key=itemgetter(1))
+  print('Step1. Sort by word first.')
+  print(myList)
+  print('Step2. Sort by freq next.')
+  myList.sort(key=itemgetter(0), reverse=True)
+  print(myList)
+
+mySortTester()

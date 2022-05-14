@@ -11,7 +11,7 @@ sys.path.append(parentdir)
 from _utils import printLinkedList, printDict
 
 class DoublyLinkedList:
-  def __init__(self, key, val) -> None:
+  def __init__(self, key, val):
     self.key = key
     self.value = val
     self.prev = None
@@ -22,7 +22,7 @@ class DoublyLinkedList:
     self.next = None
 
 class LRUCache:
-  def __init__(self, capacity) -> None:
+  def __init__(self, capacity):
     self.dict = dict()
     self.capacity = capacity
     self.head = DoublyLinkedList(0, 0)
@@ -30,7 +30,7 @@ class LRUCache:
     self.head.next = self.tail
     self.tail.prev = self.head
 
-  def get(self, key) -> None:
+  def get(self, key):
     if key in self.dict:
       node = self.dict[key]
       self.removeFromList(node)
@@ -39,7 +39,7 @@ class LRUCache:
     else:
       return -1
 
-  def put(self, key, val) -> None:
+  def put(self, key, val):
     if key in self.dict:
       node = self.dict[key]
       self.removeFromList(node)
