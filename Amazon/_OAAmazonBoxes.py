@@ -105,34 +105,81 @@
 
 '''
 
+from collections import Counter
 import math
 
 
-def getTrips(frequency):
-  if (frequency == 1):
-    return -1
-  if (frequency % 3 == 0):
-    return frequency / 3
-  if (frequency % 3 == 2 or frequency % 3 == 1):
-    return math.floor((frequency / 3)) + 1
 
-def amazonBoxes(weights: list[int]):
-
-  map = {}
-  for weight in weights:
-    map[weight] = map.get(weight, 0) + 1
-
-  totalTrips = 0
-  for key in map:
-    trips = getTrips(map[key])    
-
-    if trips == -1:
+class SolutionRef:
+  def getTrips(self, frequency):
+    if (frequency == 1):
       return -1
+    if (frequency % 3 == 0):
+      return frequency / 3
+    if (frequency % 3 == 2 or frequency % 3 == 1):
+      return math.floor((frequency / 3)) + 1
 
-    totalTrips += trips
+  def amazonBoxes(self, weights: list[int]):
+    map = {}
+    for weight in weights:
+      map[weight] = map.get(weight, 0) + 1
 
-  return totalTrips
+    totalTrips = 0
+    for key in map:
+      trips = self.getTrips(map[key])    
 
+      if trips == -1:
+        return -1
 
-result = amazonBoxes([2, 2, 3, 3, 2, 4, 4, 4, 4, 4])
-print(result)
+      totalTrips += trips
+
+    return totalTrips
+
+class Solution:
+  def amazonBoxes(self, weights: list[int]):
+    freqMap = Counter(weights)
+    totalTrips = 0
+    
+    for freq in list(freqMap.values()):
+      trips = int(self.getTrips(freq))
+      if trips == -1: return -1
+      totalTrips += trips
+    
+    return totalTrips
+  
+  def getTrips(self, freq):
+    if freq == 1: 
+      return -1
+    if freq % 3 == 0:
+      return freq // 3
+    if freq % 3 > 0:
+      return (freq // 3) + 1
+    '''
+      Ex 4: 2 + 2 = 4
+      Ex 5: 3 + 2 = 5
+      Ex 7: 3 + 4 = 7
+      
+      We take freq // 3 to determine how many times we can remove packs of 3.
+      The +1 will add a trip taking 2 packages.
+      
+      For example: 
+      We can take 1 pack of 3 from 4, which leaves one.
+      
+      4 - 3 = 1
+      
+      That leaves 1, but 1 is not divisible by 3 or 2. This is fine since we can take a 
+      pack of two instead of the previous 3 - the 3 that was taken will automatically be 
+      converted into a pack of 2
+      
+      4 - 2 = 2 (which leaves another pack of 2).
+      
+      In essence, every value greater than 1 can be broken down into multiples of 2 and 3.
+    '''
+    
+
+  
+def runSolution():
+  solution = Solution()
+  print(solution.amazonBoxes([2, 2, 3, 3, 2, 4, 4, 4, 4, 4]))
+  pass
+runSolution()

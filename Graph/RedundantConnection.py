@@ -70,27 +70,21 @@ class Solution1:
 
 class Solution:
   def findRedundantConnection(self, edges):
-    graph = {i:i for i in range(1, len(edges) + 1)}
+    parents = {i:i for i in range(1, len(edges) + 1)}
     
-    def find(node):
-      if node != graph[node]:
-        graph[node] = find(graph[node])
-      return graph[node]
-  
-    def union(nodeA, nodeB):
-      graph[find(nodeA)] = find(nodeB)
+    def getRoot(node):
+      if node != parents[node]:
+        parents[node] = getRoot(parents[node])
+      return parents[node]
     
+    def union(child, parent):
+      childRoot  = getRoot(child)
+      parentRoot = getRoot(parent)
+      parents[childRoot] = parentRoot
+      
     for nodeA, nodeB in edges:
-      if find(nodeA) == find(nodeB): return [nodeA, nodeB]
+      if getRoot(nodeA) == getRoot(nodeB): return [nodeA, nodeB]
       else: union(nodeA, nodeB)
-    
-    return []
-    
-    
-    
-  
-
-
   
 def runSolution():
   solution = Solution()

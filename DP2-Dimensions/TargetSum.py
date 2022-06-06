@@ -6,7 +6,7 @@
 
 from itertools import product
 
-class Solution:
+class SolutionRef:
   def findTargetSumWays(self, nums, target):
     n, DP = len(nums), {}
     
@@ -25,6 +25,26 @@ class Solution:
     
     DFS(0, 0)
     return DP[0][0]
+  
+class Solution:
+  def findTargetSumWays(self, nums, target):
+    DP = {}
+    n = len(nums)
+    
+    def DFS(index, sum):
+      if (index, sum) in DP: return DP[(index, sum)]
+      if index >= n:
+        if sum == target: return 1
+        return 0
+      
+      add = DFS(index + 1, sum + nums[index])
+      sub = DFS(index + 1, sum - nums[index])
+      
+      DP[(index, sum)] = add + sub
+      return DP[(index, sum)]
+    
+    return DFS(0, 0)
+    
   
 def runSolution():
   solution = Solution()

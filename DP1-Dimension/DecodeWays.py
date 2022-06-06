@@ -95,17 +95,15 @@ class Solution:
     DP[0] = 1
     DP[1] = 1 if s[0] != '0' else 0
     
-    for i in range(1, n):
-      num1 = int(s[i: i + 1])
-      num2 = int(s[i - 1: i + 1])
+    for i in range(2, n + 1):
+      if 1 <= int(s[i - 1:i]) <= 9: 
+        DP[i] += DP[i - 1]
       
-      if 1 <= num1 <= 9:
-        DP[i + 1] += DP[i]
-      
-      if 10 <= num2 <= 26:
-        DP[i + 1] += DP[i - 1]
+      if 10 <= int(s[i - 2:i]) <= 26:
+        DP[i] += DP[i - 2]
     
     return DP[-1]
+    
       
   
 def runSolution():

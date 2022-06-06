@@ -39,29 +39,27 @@ class Solution1:
 class Solution:
   def networkDelayTime(self, times, n, k):
     graph = self.buildGraph(times)
-    seen  = set()
-    heap  = [(0, k)]
-    nodesReached = 0
+    heap = [(0, k)] #(distance, node)
+    seen = set()
     
     while heap:
-      time, src = heapq.heappop(heap)
-      if src in seen: continue
-      seen.add(src)
+      distance, node = heapq.heappop(heap)
+      if node in seen: continue
+      seen.add(node)
       
-      nodesReached += 1
-      if nodesReached == n: return time
+      if len(seen) == n: return distance
       
-      for timeCost, dst in graph[src]:
-        if dst in seen: continue
-        heapq.heappush(heap, (time + timeCost, dst))
-    
+      for nextNode, cost in graph[node]:
+        if nextNode in seen: continue
+        heapq.heappush(heap, (distance + cost, nextNode))
+        
     return -1
+    
   
   def buildGraph(self, times):
-    # times.sort(key=lambda x: x[2])
     graph = defaultdict(list)
-    for src, dst, time in times:
-      graph[src].append((time, dst))
+    for src, dst, cost in times:
+      graph[src].append((dst, cost))      
     return graph
 
   

@@ -5,9 +5,10 @@
 '''
 
 from math import floor
+import math
 
 
-class Solution:
+class SolutionRef:
   def mySqrt(self, x):
     L, R = 0, x + 1
     
@@ -18,6 +19,19 @@ class Solution:
       else           : R = M
     
     return L - 1
+
+class Solution:
+  def mySqrt(self, x):
+    L, R = 0, x + 1
+    
+    while L < R:
+      M = L + (R - L)//2
+      
+      if M*M <= x: L = M + 1
+      else       : R = M
+    
+    return L - 1
+      
   
   
 def runSolution():

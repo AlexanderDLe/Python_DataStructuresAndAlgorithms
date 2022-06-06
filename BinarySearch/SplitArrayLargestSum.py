@@ -4,7 +4,7 @@
 
 '''
 
-class Solution:
+class SolutionRef:
   def splitArray(self, nums, m):
     self.partitions, self.nums = m, nums
     L, R = max(nums), sum(nums)
@@ -29,6 +29,32 @@ class Solution:
         currSum = num
     
     return partitions <= self.partitions
+  
+class Solution:
+  def splitArray(self, nums, m):
+    self.nums, self.m = nums, m
+    L, R = max(nums), sum(nums)
+    
+    while L < R:
+      maxSum = L + (R - L)//2
+      if self.feasible(maxSum): R = maxSum
+      else                    : L = maxSum + 1
+    
+    return L
+    
+  
+  def feasible(self, maxSum):
+    currSum = 0
+    partitions = 1
+    
+    for num in self.nums:
+      currSum += num
+      
+      if currSum > maxSum:
+        currSum = num
+        partitions += 1
+    
+    return partitions <= self.m
   
   
 def runSolution():

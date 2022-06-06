@@ -30,10 +30,11 @@ class SolutionRef:
 
 class Solution:
   def longestCommonSubsequence(self, text1, text2):
-    DP = [[0]*(len(text2) + 1) for _ in range(len(text1) + 1)]
-    
-    for row in range(len(text1) - 1, -1, -1):
-      for col in range(len(text2) - 1, -1, -1):
+    len1, len2 = len(text1), len(text2)
+    DP = [[0]*(len2 + 1) for _ in range(len1 + 1)]
+
+    for row in range(len1 - 1, -1, -1):
+      for col in range(len2 - 1, -1, -1):
         if text1[row] == text2[col]:
           DP[row][col] = 1 + DP[row + 1][col + 1]
         else:

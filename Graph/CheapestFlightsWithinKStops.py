@@ -25,7 +25,10 @@ class SolutionRef:
       prices = tempPrices
     
     return -1 if prices[dst] == float('inf') else prices[dst]
-  
+
+
+
+
 class Solution:
   def findCheapestPrice(self, n, flights, src, dst, k):
     prices = [float('inf')] * n
@@ -34,12 +37,12 @@ class Solution:
     for _ in range(k + 1):
       temp = prices.copy()
       
-      for s, d, p in flights:
-        if prices[s] == float('inf'): continue
-        temp[d] = min(temp[d], prices[s] + p)
-        
+      for f, t, c in flights:
+        if flights[f] == float('inf'): continue
+        temp[t] = min(temp[t], prices[f] + c)
+      
       prices = temp
-    
+      
     return prices[dst] if prices[dst] != float('inf') else -1
 
   

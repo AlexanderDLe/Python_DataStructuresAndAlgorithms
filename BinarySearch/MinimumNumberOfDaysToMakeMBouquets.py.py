@@ -5,6 +5,9 @@
 '''
 
 
+from re import M
+
+
 class SolutionMySolution:
   def minDays(self, bloomDay, m, k):
     if len(bloomDay) < (m * k): return -1
@@ -44,7 +47,7 @@ class SolutionMySolution:
     
     return bouquetsCreated >= self.m
   
-class Solution:
+class SolutionRef:
   def minDays(self, bloomDay, m, k):
     if len(bloomDay) < (m * k): return -1
     
@@ -73,11 +76,40 @@ class Solution:
     
     return bouquets >= self.m
   
+class Solution:
+  def minDays(self, bloomDay, m, k):
+    if len(bloomDay) < (m * k): return -1
+    self.bloomDay, self.m, self.k = bloomDay, m, k
+    
+    L, R = 1, max(bloomDay) + 1
+    
+    while L < R:
+      days = L + (R - L)//2
+      if self.isFeasible(days): R = days
+      else                    : L = days + 1
+    
+    return L
+  
+  def isFeasible(self, days):
+    bouquets = flowers = 0
+    
+    for bloom in self.bloomDay:
+      if bloom > days:
+        flowers = 0
+      else:
+        flowers += 1
+        
+        if flowers == self.k:
+          bouquets += 1
+          flowers = 0
+    
+    return bouquets >= self.m
+  
   
 def runSolution():
   solution = Solution()
-  # print(solution.minEatingSpeed(bloomDay = [1,10,3,10,2], m = 3, k = 1))
-  # print(solution.minEatingSpeed(bloomDay = [1,10,3,10,2], m = 3, k = 2))
+  print(solution.minDays(bloomDay = [1,10,3,10,2], m = 3, k = 1))
+  print(solution.minDays(bloomDay = [1,10,3,10,2], m = 3, k = 2))
   print(solution.minDays(bloomDay = [7,7,7,7,12,7,7], m = 2, k = 3))
   pass
 runSolution()

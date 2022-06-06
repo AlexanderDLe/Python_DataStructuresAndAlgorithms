@@ -7,7 +7,7 @@
 from math import ceil
 
 
-class Solution:
+class SolutionRef:
   def minEatingSpeed(self, piles, h):
     self.piles, self.h = piles, h
     L, R = 1, max(piles)
@@ -26,6 +26,26 @@ class Solution:
     for pile in self.piles:
       hoursRequired += ceil(pile/speed)
 
+    return hoursRequired <= self.h
+  
+class Solution:
+  def minEatingSpeed(self, piles, h):
+    self.piles, self.h = piles, h
+    L, R = 1, max(piles)
+    
+    while L < R:
+      rate = L + (R - L)//2
+      if self.feasible(rate): R = rate
+      else                  : L = rate + 1
+    
+    return L
+      
+  def feasible(self, rate):
+    hoursRequired = 0
+    
+    for pile in self.piles:
+      hoursRequired += ceil(pile / rate)
+    
     return hoursRequired <= self.h
   
   

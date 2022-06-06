@@ -53,7 +53,7 @@
   Save the highest for both row and col.
   Now add them together = 3 + 4 = 7
 
-  Possible number of pixels per row + col = 4 + 4 = 8
+  Possible number of pixels per row + col = 4 + 4 -1 = 7
 
   Subtract possible 
 '''

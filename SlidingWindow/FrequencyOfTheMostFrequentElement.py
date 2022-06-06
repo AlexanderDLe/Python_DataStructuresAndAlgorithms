@@ -4,7 +4,7 @@
   
 '''
 
-class Solution:
+class SolutionRef:
   def maxFrequency(self, nums, k):
     nums.sort()
     L = R = currSum = result = 0
@@ -22,8 +22,23 @@ class Solution:
     
     return result
     
+class Solution:
+  def maxFrequency(self, nums, k):
+    nums.sort()
+    L = R = currSum = ans = 0
+    incsRequired = lambda currSum: nums[R] * (R - L  + 1) - currSum
     
+    while R < len(nums):
+      currSum += nums[R]
+      
+      while incsRequired(currSum) > k:
+        currSum -= nums[L]
+        L += 1
+      
+      ans = max(ans, R - L + 1)
+      R += 1
     
+    return ans
   
 def runSolution():
   solution = Solution()

@@ -16,7 +16,6 @@ class SolutionRef:
     for source, destination in tickets:
       graph[source].append(destination)
     
-    
     def DFS(src):
       if len(result) == len(tickets) + 1: return True
       if src not in graph: return False
@@ -64,38 +63,44 @@ class Solution1:
     DFS('JFK')
     return result
   
+  
+  
 class Solution:
   def findItinerary(self, tickets):
     graph = self.buildGraph(tickets)
+    result = ['JFK']
     
     def DFS(src):
-      if len(self.result) == len(tickets) + 1: return True
-      if not graph[src]: return False
+      if len(result) == len(tickets) + 1: return True
       
       for i, dst in enumerate(graph[src]):
-        self.result.append(dst)
+        result.append(dst)
         graph[src].pop(i)
         
         if DFS(dst): return True
         
-        self.result.pop()
+        result.pop()
         graph[src].insert(i, dst)
+      
+      return False
     
-    self.result = ['JFK']
     DFS('JFK')
-    return self.result
-  
+    return result
+    
+    
   def buildGraph(self, tickets):
     tickets.sort()
     graph = defaultdict(list)
-    for src, dest in tickets:
-      graph[src].append(dest)
+    
+    for src, dst in tickets:
+      graph[src].append(dst)
+    
     return graph
+
 
   
 def runSolution():
   solution = Solution()
-  
   print(solution.findItinerary(
     tickets = [["MUC","LHR"],["JFK","MUC"],["SFO","SJC"],["LHR","SFO"]]))
   print(solution.findItinerary(

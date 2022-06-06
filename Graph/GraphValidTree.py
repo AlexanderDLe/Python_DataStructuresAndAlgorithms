@@ -6,7 +6,7 @@
 
 from collections import Counter, defaultdict, deque
 
-class SolutionRef:
+class SolutionRef1:
   def validTreeUnionFind(self, n, edges):
     if len(edges) != n - 1: return False
     
@@ -61,7 +61,7 @@ class SolutionRef:
     
     return len(seen) == n
     
-class Solution:
+class SolutionRef2:
   def validTree(self, n, edges):
     if len(edges) != n - 1: return False
     
@@ -83,6 +83,31 @@ class Solution:
         
     
     return len(seen) == n
+  
+class Solution:
+  def validTree(self, n, edges):
+    if len(edges) != n - 1: return False
+    seen = set([0])
+    queue = deque([0])
+    graph = self.buildGraph(edges)
+    
+    while queue:
+      for _ in range(len(queue)):
+        node = queue.popleft()
+        
+        for next in graph[node]:
+          if next in seen: continue
+          seen.add(next)
+          queue.append(next)
+    
+    return len(seen) == n
+  
+  def buildGraph(self, edges):
+    graph = defaultdict(list)
+    for x, y in edges:
+      graph[x].append(y)
+      graph[y].append(x)
+    return graph
   
 
 

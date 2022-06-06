@@ -6,7 +6,7 @@
 
 from collections import Counter, defaultdict, deque
 
-class Solution:
+class Solution1:
   def alienOrder(self, words):
     inDegrees, parents, queue, charCount, valid = self.init(words)
     seen = set()
@@ -62,14 +62,22 @@ class Solution:
     if len(curr) > len(next) and curr[0: len(next)] == next: return True
     return False
     
+class Solution:
+  def alienOrder(self, words):
+    inDegrees, parents, sources = self.init(words)
+  
+  
+  def init(self, words):
+    pass
+    
 
   
 def runSolution():
   solution = Solution()
   print(solution.alienOrder(["ac","ab","b"]))
-  # print(solution.alienOrder(["wrt","wrf","er","ett","rftt"]))
-  # print(solution.alienOrder(["z","x"]))
-  # print(solution.alienOrder(["z","x","z"]))
-  # print(solution.alienOrder(["z","z"]))
+  print(solution.alienOrder(["wrt","wrf","er","ett","rftt"]))
+  print(solution.alienOrder(["z","x"]))
+  print(solution.alienOrder(["z","x","z"]))
+  print(solution.alienOrder(["z","z"]))
   pass
 runSolution()
