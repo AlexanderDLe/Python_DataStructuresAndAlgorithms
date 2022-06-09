@@ -12,18 +12,19 @@ sys.path.append(parentdir)
 from DataStrucutres import ListNode, createList
 from _utils import printLinkedList
 
-class DoublyListNode:
+#+ REFERENCE +#
+class DoublyListNodeRef:
   def __init__(self, key, val):
     self.key = key
     self.val = val
     self.prev = None
     self.next = None
 
-class LRUCache:
+class LRUCacheRef:
   def __init__(self, capacity):
     self.nodeMap = {}
-    self.head = DoublyListNode(0, 0)
-    self.tail = DoublyListNode(0, 0)
+    self.head = DoublyListNodeRef(0, 0)
+    self.tail = DoublyListNodeRef(0, 0)
     self.head.next = self.tail
     self.tail.prev = self.head
     self.capacity = capacity
@@ -43,7 +44,7 @@ class LRUCache:
       self.renew(node)
       return
     
-    node = DoublyListNode(key, value)
+    node = DoublyListNodeRef(key, value)
     self.nodeMap[key] = node
     
     # Put into list with room
@@ -79,9 +80,16 @@ class LRUCache:
   def renew(self, node):
     self.pluck(node)
     self.pushHead(node)
+#+ REFERENCE +#
     
     
-        
+class DoublyListNode:
+  def __init__(self, val):
+    self.val = val
+    
+class LRUCache:
+  def __init__(self):
+    pass
 
 def runSolution():
   lRUCache = LRUCache(2)

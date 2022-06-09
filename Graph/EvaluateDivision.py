@@ -8,7 +8,7 @@
 from collections import defaultdict, deque
 
 
-class Solution:
+class SolutionRef:
   def calcEquation(self, equations, values, queries):
     graph = self.buildGraph(equations, values)
     result = []
@@ -43,6 +43,37 @@ class Solution:
       graph[x].append((y, value))
       graph[y].append((x, 1/value))
     
+    return graph
+      
+class Solution:
+  def calcEquation(self, equations, values, queries):
+    graph = self.buildGraph(equations, values)
+    result = [-1] * len(queries)
+    
+    for i, (x, y) in enumerate(queries):
+      if x not in graph or y not in graph: continue
+      
+      seen = set([x])
+      queue = deque([(x, 1)])
+      
+      while queue:
+        node, val = queue.popleft()
+        if node == y: 
+          result[i] = val
+          break
+        
+        for next, nextVal in graph[node]:
+          if next in seen: continue
+          seen.add(next)
+          queue.append((next, val * nextVal))
+    
+    return result
+  
+  def buildGraph(self, equations, values):
+    graph = defaultdict(list)
+    for (x, y), val in zip(equations, values):
+      graph[x].append((y, val))
+      graph[y].append((x, 1/val))
     return graph
       
     

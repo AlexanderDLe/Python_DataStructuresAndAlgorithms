@@ -7,11 +7,9 @@
 from collections import Counter, defaultdict, deque
 from itertools import product
 
-
 class Solution:
   def canFinish(self, numCourses, prerequisites):
-    parents, inDegrees, queue = self.init(numCourses, prerequisites)
-    
+    parents, inDegrees, queue = self.init(numCourses, prerequisites)   
     count = 0
     
     while queue:

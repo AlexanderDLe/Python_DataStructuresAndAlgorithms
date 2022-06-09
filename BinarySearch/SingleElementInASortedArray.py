@@ -2,6 +2,21 @@
 
   540. Single Element in a Sorted Array
 
+  Duplicates appear only twice.
+  
+  Since duplicates only appear twice, we can figure out if a duplicate is
+  on the left or right side by determining if the left side has an even
+  number of digits or not.
+  
+  [1,1,2,2,3,3,4,5,5,6,6,6]
+           ^   
+  At this first 3, we see it is a duplicate. Since it is the first duplicate,
+  then there must be 4 numbers before it.
+
+  if   val == next and M % 2 == 1: R = M - 1
+  elif val == next and M % 2 == 0: L = M + 1
+  elif val == prev and M % 2 == 0: R = M - 1
+  elif val == prev and M % 2 == 1: L = M + 1
 '''
 
 class Solution:

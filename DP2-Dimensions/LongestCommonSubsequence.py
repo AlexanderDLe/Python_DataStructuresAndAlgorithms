@@ -14,7 +14,7 @@
 from itertools import product
 
 
-class SolutionRef:
+class SolutionBottomUp:
   def longestCommonSubsequence(self, text1, text2):
     DP = [[0]*(len(text2) + 1) for _ in range(len(text1) + 1)]
     
@@ -30,17 +30,26 @@ class SolutionRef:
 
 class Solution:
   def longestCommonSubsequence(self, text1, text2):
-    len1, len2 = len(text1), len(text2)
-    DP = [[0]*(len2 + 1) for _ in range(len1 + 1)]
-
-    for row in range(len1 - 1, -1, -1):
-      for col in range(len2 - 1, -1, -1):
-        if text1[row] == text2[col]:
-          DP[row][col] = 1 + DP[row + 1][col + 1]
-        else:
-          DP[row][col] = max(DP[row + 1][col], DP[row][col + 1])
+    DP = {}
+    n1, n2 = len(text1), len(text2)
     
-    return DP[0][0]
+    def DFS(p, q):
+      if (p,q) in DP: return DP[p,q]
+      if p >= n1 or q >= n2: return 0
+    
+      res = 0
+      if text1[p] == text2[q]:
+        res = 1 + DFS(p + 1, q + 1)
+      else:
+        res = max(DFS(p + 1,q), DFS(p, q + 1))
+      
+      DP[p,q] = res
+      return res
+    
+    
+    return DFS(0, 0)
+  
+  
   
 def runSolution():
   solution = Solution()

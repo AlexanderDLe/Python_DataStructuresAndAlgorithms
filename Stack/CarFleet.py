@@ -113,28 +113,49 @@ class SolutionMySolution:
         if fleet[2] <= top[2]: continue
         else: stack.append(fleet)
     
+    print(stack)
     return len(stack)
   
-class Solution:
+class Solution1:
   def carFleet(self, target, position, speed):
     pair = [[p, s] for p, s in zip(position, speed)]
     stack = []
     
     for p, s in sorted(pair)[::-1]:
-      print((p, s))
       stack.append((target - p) / s)
       if len(stack) >= 2 and stack[-1] <= stack[-2]:
         stack.pop()
     
     return len(stack)
-      
+
+'''
+  4 miles left @ 2mph = 2 hours until target
+  15 miles left @ 5mph = 3 hours until target
+'''
+
+class Solution:
+  def carFleet(self, target, position, speed):
+    pairs = [(pos, spd) for pos, spd in zip(position, speed)]
+    pairs.sort(reverse = True)
+    stack = []
     
+    for pos, spd in pairs:
+      milesToTarget = target - pos
+      hoursUntilTarget = milesToTarget / spd
+      
+      if not stack or hoursUntilTarget > stack[-1]:
+        stack.append(hoursUntilTarget)
+    
+    return len(stack)
+      
+     
     
   
 def runSolution():
   solution = Solution()
+  print(solution.carFleet(10, [0,4,2], [2,1,3]))
   # print(solution.carFleet(target = 12, position = [10,8,0,5,3], speed = [2,4,1,1,3]))
   # print(solution.carFleet(target = 10, position = [3], speed = [3]))
-  print(solution.carFleet(target = 100, position = [0,2,4], speed = [4,2,1]))
+  # print(solution.carFleet(target = 100, position = [0,2,4], speed = [4,2,1]))
   pass
 runSolution()

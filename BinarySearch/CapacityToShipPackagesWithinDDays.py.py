@@ -10,8 +10,7 @@ class SolutionRef:
     L, R = max(weights), sum(weights)
     
     while L < R:
-      M = L + (R - L)//2
-      
+      M = L + (R - L)//2      
       if self.isFeasible(M): R = M
       else                 : L = M + 1
     

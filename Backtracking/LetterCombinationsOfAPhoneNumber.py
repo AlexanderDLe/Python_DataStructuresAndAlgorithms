@@ -4,7 +4,7 @@
   
 '''
 
-class Solution:
+class SolutionBFS:
   phoneMap = {
     '1': [],
     '2': ['a', 'b', 'c'],
@@ -33,6 +33,37 @@ class Solution:
       
       result = res
     
+    return result
+  
+class Solution:
+  phoneMap = {
+    '1': [],
+    '2': ['a', 'b', 'c'],
+    '3': ['d', 'e', 'f'],
+    '4': ['g', 'h', 'i'],
+    '5': ['j', 'k', 'l'],
+    '6': ['m', 'n', 'o'],
+    '7': ['p', 'q', 'r', 's'],
+    '8': ['t', 'u', 'v'],
+    '9': ['w', 'x', 'y', 'z'],
+    '0': [],
+  }
+  
+  def letterCombinations(self, digits):
+    n = len(digits)
+    result = []
+    
+    def DFS(index, arr):
+      if index == n:
+        result.append(''.join(arr))
+        return
+      
+      for char in self.phoneMap[digits[index]]:
+        arr.append(char)
+        DFS(index + 1, arr)
+        arr.pop()
+    
+    DFS(0, [])
     return result
   
   

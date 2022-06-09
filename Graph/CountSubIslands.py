@@ -7,7 +7,6 @@
 
 from itertools import product
 
-
 class Solution:
   def countSubIslands(self, grid1, grid2):
     self.rows, self.cols = len(grid1), len(grid1[0])
@@ -16,7 +15,8 @@ class Solution:
     
     for row, col in product(range(self.rows), range(self.cols)):
       if grid1[row][col] == 1 and grid2[row][col] == 1:
-        if self.processSubIsland(row, col): subIslands += 1
+        res = self.processSubIsland(row, col)
+        if res: subIslands += 1
         
     return subIslands
     

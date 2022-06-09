@@ -1,6 +1,6 @@
 '''
 
-  1905. Count Sub Islands
+  1162. As Far from Land as Possible
 
 '''
 

@@ -16,6 +16,8 @@ class Solution:
     queue = deque([(i, masks[i]) for i in range(n)])
     visitedStates = [{masks[i]} for i in range(n)]
     steps = 0
+    print(masks, allVisited)
+    print(visitedStates)
 
     while queue:
       for _ in range(len(queue)):

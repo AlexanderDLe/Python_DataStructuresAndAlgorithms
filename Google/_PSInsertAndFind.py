@@ -1,12 +1,14 @@
 '''
   I have been asked int google telephonic interview this simple question but unable to resolve it in given 45 time limit,
-  The question is: U need to design structure in which it will nee to implement following 2 methods :
+  The question is: U need to design structure in which it will implement following 2 methods:
 
   public void insertOrReplace(long index, long number)
   public long findSmallestIndex(long number)
   
-  so the first one is to insert the number on the index given by the user, index can be any number of long type and if at the same index another number comes it will replace that number
-  2nd method is need to be implemented int which user will be given any number and we need to return the smallest index of that number
+  1. Insert the number on the index given by the user.
+  Index can be any number of long type and if at the same index another number comes it will replace that number
+  
+  2. Implemented int which user will be given any number and we need to return the smallest index of that number
   
   Ex:
   
@@ -20,9 +22,11 @@
   if new number 200 comes at index 2 then 100 will be present only at indexs 1,3 &5 and 2nd index will be removed.
   
   Please help.
+  
   I have told the approach after getting hint from my interviewer, but not able to code it due to time limit .
   I just told them that I will use 2 hashmaps one for index->number and another for number->tree set of indexes->I will use treeset here because it will store the indexes in sorted order
   I dont know If I will get the chance for 2nd round of interview or not. I am very upset.
+
 '''
 
 
