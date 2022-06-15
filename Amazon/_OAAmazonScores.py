@@ -62,54 +62,46 @@
   -------------------------------------------------------------------------------
 
     15   10   10   7   7   5   3
-                 ^
+    ^
 
-    rank = 2
-    lvls = 3
+    rank = 1
+    lvls = 1
     
 '''
 
-import heapq
-import math
-
-def scoringRef(scores, cutOffRank, num):
-  scores.sort(reverse = True)
-  print(scores)
-
-  lvls =  0
-  rank = 0
-  prev = 0
-
-  for score in scores:
-    if score == 0: break
-    if rank >= cutOffRank: break
-
-    lvls += 1
-    if score is not prev: 
-      rank += 1
-      prev = score
-
-  return lvls
-
-def scoring(scores, cutOffRank, num):
-  scores.sort(reverse=True)
-  print(scores)
+class Solution:
+  '''
+     1    2   2  4  4  6  7
+    [15, 10, 10, 7, 7, 5, 3]  cutOffRank = 3
+          ^    
+    lvls = 1
+    rank = 2
   
-  prev = float('inf')
-  rank = 0
-  lvls = 0
+  '''
+  def scoring(self, scores, cutOffRank):
+    scores.sort(reverse = True)
+    if len(scores) == 0 or scores[0] == 0: return 0
+    
+    lvls = 1
+    rank = 1
+    
+    for i in range(1, len(scores)):
+      prev, curr = scores[i - 1], scores[i]
+      
+      # Since the next rank continues despite duplicates, we can
+      # get the next ranking via i + 1
+      if curr != prev: rank = i + 1   
+      if rank > cutOffRank or curr == 0: break
+      
+      lvls += 1      
+    
+    return lvls
   
-  for score in scores:
-    if score == 0: break
-    
-    if score != prev:
-      prev = score
-      rank += 1
-      if rank > cutOffRank: break
-    
-    lvls += 1
-    
-  return lvls
-
-
-print(scoring([10, 10, 15, 7, 7, 5, 3], 3, 7))
+def runSolution():
+  solution = Solution()
+  print(solution.scoring([15, 10, 10, 7, 7, 5, 3], 3))
+  print(solution.scoring([15, 10, 7, 7, 7, 5, 3], 3))
+  print(solution.scoring([15, 0], 3))
+  print(solution.scoring([0], 3))
+  pass
+runSolution()

@@ -37,7 +37,7 @@ class SolutionBruteForce:
     
     return result
     
-class Solution:
+class SolutionRef:
   def minInterval(self, intervals, queries):
     intervals.sort()
     sortedQueries = sorted(enumerate(queries), key=lambda x: x[1])
@@ -62,6 +62,39 @@ class Solution:
         res[origIndex] = activeIntervals[0][0]
     
     return res
+
+class QueryNode:
+  def __init__(self, start, end):
+    self.start = start
+    self.end = end
+  def __lt__(self, other):
+    if self.end == other.end: return self.start < other.start
+    return self.end < other.end
+
+class Solution:
+  def minInterval(self, intervals, queries):
+    n = len(queries)
+    intervals.sort()
+    sortedQueries = sorted(enumerate(queries), key=lambda x: x[1])
+    result = [-1] * n
+    activeIntervals = []
+    
+    for index, point in sortedQueries:
+      while activeIntervals and activeIntervals[0][1] < point:
+        heapq.heappop(activeIntervals)
+      
+      while intervals and intervals[0][0] <= point:
+        start, end = intervals.pop(0)
+        
+        if end >= point:
+          heapq.heappush(activeIntervals, (end - start + 1, end))
+          
+      if activeIntervals:
+        result[index] = activeIntervals[0][0]
+      
+    return result
+    
+    
     
     
     

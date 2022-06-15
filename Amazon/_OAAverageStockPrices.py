@@ -1,4 +1,5 @@
 '''
+
   Given the stock prices of n months, the net price change for the i-th month 
   is defined as the absolute difference between the average of stock prices for 
   the first i months and for the remaining (n−i) months where 1≤i≤n.
@@ -20,26 +21,61 @@
 
   1 <= stockPrice[i] <= 10^9
 
+  -------------------------------------------------------------------
+  
+  [1,2,3,4,5,6]   totalSum = 21
+
 '''
 
 import math
 
-def averageStockPrices(prices):
-  n = len(prices)
-  totalSum = sum(prices)
-  currSum = 0
-  minDiff = math.inf
+class SolutionRef:
+  def averageStockPrices(prices):
+    n = len(prices)
+    totalSum = sum(prices)
+    currSum = 0
+    minDiff = math.inf
 
-  for i in range(n):
-    currSum += prices[i]
-    count = i + 1
+    for i in range(n):
+      currSum += prices[i]
+      count = i + 1
 
-    currentAverage = math.floor(currSum / count)
-    remainingDivisor = (n - count) or 1
-    remainingAverage = math.floor((totalSum - currSum) / (remainingDivisor))
-    minDiff = min(minDiff, abs(currentAverage - remainingAverage))
+      currentAverage = math.floor(currSum / count)
+      remainingDivisor = (n - count) or 1
+      remainingAverage = math.floor((totalSum - currSum) / (remainingDivisor))
+      minDiff = min(minDiff, abs(currentAverage - remainingAverage))
+    
+    return minDiff
+
+class Solution:
+  def averageStockPrices(self, prices):
+    n = len(prices)
+    if n == 0: return 0
+    
+    minPriceChange = math.inf
+    earliestMonth = 0
+    totalSum = sum(prices)
+    currSum = 0
+    
+    for i, price in enumerate(prices):
+      currCount = i + 1
+      remainingCount = max(1, n - i - 1)
+      
+      currSum += price
+      currAvg = currSum//currCount
+      
+      remainderSum = totalSum - currSum
+      remainderAvg = remainderSum//remainingCount
+            
+      priceChange = abs(currAvg - remainderAvg)
+      if priceChange < minPriceChange:
+        minPriceChange = priceChange
+        earliestMonth = i
+    
+    return earliestMonth + 1
   
-  return minDiff
-
-result = averageStockPrices([1,2,3,4,5,6])
-print(result)
+def runSolution():
+  solution = Solution()
+  print(solution.averageStockPrices([1,3,2,3]))
+  pass
+runSolution()

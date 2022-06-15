@@ -47,10 +47,10 @@ class Solution:
       
       if len(seen) == len(points): break
       
-      for nextIndex in range(len(points)):
-        if nextIndex in seen: continue
-        nextDistance = self.getDistance(points[index], points[nextIndex])
-        heapq.heappush(heap, (nextDistance, nextIndex))
+      for i in range(len(points)):
+        if i in seen: continue
+        nextDistance = self.getDistance(points[index], points[i])
+        heapq.heappush(heap, (nextDistance, i))
     
     return total
 

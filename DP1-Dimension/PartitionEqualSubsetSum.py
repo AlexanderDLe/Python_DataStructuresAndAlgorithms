@@ -14,17 +14,16 @@ class SolutionMine:
     DP = {}
     
     def DFS(index, curr):
-      if index in DP and curr in DP[index]: return DP[index][curr]
+      if (index, curr) in DP: return DP[index, curr]
       if curr == target: return True
       if curr > target or index >= n: return False
       
       withAdd = DFS(index + 1, curr + nums[index])
       withoutAdd = DFS(index + 1, curr)
       
-      if index not in DP: DP[index] = {}
-      DP[index][curr] = withAdd or withoutAdd
+      DP[index, curr] = withAdd or withoutAdd
       
-      return DP[index][curr]
+      return DP[index, curr]
     
     return DFS(0, 0)
 

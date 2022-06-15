@@ -3,7 +3,7 @@
   300. Longest Increasing Subsequence
 
     0   1   0   3   2   3
-DP  1   2   1   1   1   1
+DP  4   3   3   1   2   1
 
 
 '''

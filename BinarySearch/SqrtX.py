@@ -5,8 +5,6 @@
 '''
 
 from math import floor
-import math
-
 
 class SolutionRef:
   def mySqrt(self, x):

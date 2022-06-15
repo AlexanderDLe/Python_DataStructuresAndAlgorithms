@@ -18,7 +18,7 @@ class Solution:
     
     for i, char in enumerate(s):
       endIndex = max(endIndex, indexes[char])
-      if i >= endIndex: 
+      if i == endIndex: 
         result.append(i - prevIndex + 1)
         prevIndex = i + 1
     

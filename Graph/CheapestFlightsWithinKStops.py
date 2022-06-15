@@ -37,9 +37,9 @@ class Solution:
     for _ in range(k + 1):
       temp = prices.copy()
       
-      for f, t, c in flights:
-        if flights[f] == float('inf'): continue
-        temp[t] = min(temp[t], prices[f] + c)
+      for fr, to, cost in flights:
+        if flights[fr] == float('inf'): continue
+        temp[to] = min(temp[to], prices[fr] + cost)
       
       prices = temp
       

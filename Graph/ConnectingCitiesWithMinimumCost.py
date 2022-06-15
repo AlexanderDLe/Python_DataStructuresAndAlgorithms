@@ -14,7 +14,6 @@ class Solution:
     minHeap = [(0, 1)]
     seen = set()
     cost = 0
-    print(graph)
     
     while minHeap:
       distance, node = heapq.heappop(minHeap)

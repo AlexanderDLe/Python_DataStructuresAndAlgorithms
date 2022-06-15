@@ -10,8 +10,6 @@ import heapq
 class Node:
   def __init__(self, val):
     self.val = val
-  def __repr__(self):
-    return f'N:{self.val}'
   def __lt__(self, other):
     return self.val > other.val
 

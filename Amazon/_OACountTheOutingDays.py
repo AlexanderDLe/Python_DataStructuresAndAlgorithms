@@ -63,34 +63,43 @@
 
 '''
 
-def countOutingDays(rainfall, k):
-  n = len(rainfall)
+class SolutionRef:
+  def countOutingDays(self, rainfall, k):
+    n = len(rainfall)
 
-  fromLeft = n * [0]
-  fromRight = n * [0]
+    fromLeft = n * [0]
+    fromRight = n * [0]
 
-  for i in range(1, n):
-    if (rainfall[i] >= rainfall[i - 1]):
-      fromLeft[i] = fromLeft[i - 1] + 1
+    for i in range(1, n):
+      if (rainfall[i] >= rainfall[i - 1]):
+        fromLeft[i] = fromLeft[i - 1] + 1
+    
+    for i in range(n - 2, -1, -1):
+      if (rainfall[i] >= rainfall[i + 1]):
+        fromRight[i] = fromRight[i + 1] + 1
+
+    # [3,2,2,2,3,4] n = 6, k = 2; n - k = 4
+    #      ^ ^
+    #      k n-k
+    result = []
+    for i in range(k, n - k):
+      rightIdeal = fromLeft[i + k] >= k
+      leftIdeal = fromRight[i - k] >= k
+
+      if (rightIdeal and leftIdeal):
+        result.append(i + 1)
+    
+    return result
   
-  for i in range(n - 2, -1, -1):
-    if (rainfall[i] >= rainfall[i + 1]):
-      fromRight[i] = fromRight[i + 1] + 1
-
-  # [3,2,2,2,3,4] n = 6, k = 2; n - k = 4
-  #      ^ ^
-  #      k n-k
-  result = []
-  for i in range(k, n - k):
-    rightIdeal = fromLeft[i + k] >= k
-    leftIdeal = fromRight[i - k] >= k
-
-    if (rightIdeal and leftIdeal):
-      result.append(i + 1)
+class Solution:
+  def countOutingDays(self, rainfall, k):
+    pass
   
-  return result
-
-
-print(countOutingDays([3,2,2,2,3,4],2))
-print(countOutingDays([1,0,1,0,1],1))
-print(countOutingDays([1,1,1,1,1,1,1,1,1,1], 3))
+  
+def runSolution():
+  solution = Solution()
+  print(solution.countOutingDays([3,2,2,2,3,4],2))
+  print(solution.countOutingDays([1,0,1,0,1],1))
+  print(solution.countOutingDays([1,1,1,1,1,1,1,1,1,1], 3))
+  pass
+runSolution()

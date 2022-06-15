@@ -135,7 +135,7 @@ class SolutionRef:
 
     return totalTrips
 
-class Solution:
+class Solution1:
   def amazonBoxes(self, weights: list[int]):
     freqMap = Counter(weights)
     totalTrips = 0
@@ -176,7 +176,25 @@ class Solution:
       In essence, every value greater than 1 can be broken down into multiples of 2 and 3.
     '''
     
-
+class Solution:
+  def amazonBoxes(self, weights):
+    freqMap = Counter(weights)
+    totalTrips = 0
+    
+    for packages in list(freqMap.values()):
+      trips = self.getTrips(packages)
+      if trips == -1: return -1
+      totalTrips += trips
+    
+    return totalTrips
+  
+  def getTrips(self, freq):
+    if freq == 1: 
+      return -1
+    if freq % 3 == 0: 
+      return freq // 3
+    if freq % 3 > 0:
+      return freq // 3 + 1
   
 def runSolution():
   solution = Solution()

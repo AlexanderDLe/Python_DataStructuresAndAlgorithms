@@ -2,7 +2,7 @@
 
   Determine all possible segments, where a segment has: max - min <= k. 
   
-  You are given k and a list of numbers. A segment is a consequtive subarray of the list.
+  You are given k and a list of numbers. A segment is a consecutive subarray of the list.
 
   Ex:
 
@@ -264,56 +264,53 @@
 from collections import deque
 
 
-def determineSegmentsNonOverlapping(nums, k):
-  maxQ, minQ = [], []
+class SolutionRef:
+  def determineSegments(nums, k):
+    n = len(nums)
+    contributions = [n] * n
+    queue = deque()
+    getQVal = lambda : nums[queue[0]]
+
+    for i in range(n):
+      num = nums[i]
+
+      while queue and abs(num - getQVal()) > k:
+        qIndex = queue.popleft()
+        contributions[qIndex] = i
+
+      queue.append(i)
+
+
+    print(contributions)
+    total = 0
+    for i in range(n):
+      total += contributions[i] - i
+
+    return total
   
-  getQFront = lambda Q: nums[Q[0]]
-  getQLast  = lambda Q: nums[Q[-1]]
-  getQDiff  = lambda  : abs(getQFront(maxQ) - getQFront(minQ))
-
-  results = []
-  L, R = 0, 0
-
-  while R < len(nums):
-    Rval = nums[R]
-    while maxQ and Rval > getQLast(maxQ): maxQ.pop()
-    while minQ and Rval < getQLast(minQ): minQ.pop()
-
-    maxQ.append(R)
-    minQ.append(R)
-
-    if getQDiff() > k:
-      results.append(nums[L:R])
-      L = R
-      maxQ = [R]
-      minQ = [R]
-
-    R += 1
+class Solution:
+  def determineSegments(self, nums, k):
+    n = len(nums)
+    nextContributables = [n] * n
+    queue = deque()
+    getQFirst = lambda: nums[queue[0]]
+    
+    for i, num in enumerate(nums):
+      while queue and abs(num - getQFirst()) > k:
+        prevIndex = queue.popleft()
+        nextContributables[prevIndex] = i
+      
+      queue.append(i)
+    
+    result = 0
+    for i in range(n):
+      nextIndex = nextContributables[i]
+      result += nextIndex - i
+      
+    return result
   
-  results.append(nums[L:R])
-  return results
-
-def determineSegments(nums, k):
-  n = len(nums)
-  contributions = [n] * n
-  queue = deque()
-  getQVal = lambda : nums[queue[0]]
-
-  for i in range(len(nums)):
-    num = nums[i]
-
-    while queue and abs(num - getQVal()) > k:
-      qIndex = queue.popleft()
-      contributions[qIndex] = i
-
-    queue.append(i)
-
-
-  print(contributions)
-  total = 0
-  for i in range(n):
-    total += contributions[i] - i
-
-  return total
-
-print(determineSegments([3,7,12,8,4,1,10], 4))
+def runSolution():
+  solution = Solution()
+  print(solution.determineSegments([3,7,12,8,4,1,10], 4))
+  pass
+runSolution()

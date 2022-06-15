@@ -20,8 +20,8 @@ class SolutionMyDP:
       res = float('inf')
       add = 0
       
-      for s in source:
-        if index + add < len(target) and s == target[index + add]:
+      for char in source:
+        if index + add < len(target) and char == target[index + add]:
           res = min(res, 1 + DFS(index + add + 1))
           add += 1
       

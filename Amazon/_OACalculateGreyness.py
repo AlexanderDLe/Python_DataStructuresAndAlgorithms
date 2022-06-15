@@ -33,30 +33,35 @@
   
   
   [0 1 0 1]
-  [1 1 0 0]
-  [0 1 1 1]
+  [0 1 0 0]
+  [0 0 1 1]
   [0 1 0 1]
 
-  row 0: 2
-  row 1: 2
-  row 2: 3
-  row 3: 2
+  rows = [2, 1, 2, 2]
+  cols = [0, 3, 1, 3]
+  
+  Despite there being multiple 2s in rows and multiple 3 in cols,
+  the row is row 3 and col 2 (1-indexed) because their intersection
+  does not include a 1 (which means they would have to share a 1).
+  
+  To determine the best combination, we can create a indexMap that shows
+  where the max rows/cols are located.
+  
+  rowsIndices: [0, 2, 3]
+  colsIndices: [1, 3]
+  
+  These indicate the indexes of the 2s in rows and 3s in cols.
+  
+  Next, get totalPossibleOnes = rows + cols - 1 (subtract 1 for intersection)
+  totalOnes = maxRowOnes + maxColOnes - pixels[bestCombination]
+  totalZeroes = totalPossibleOnes - totalOnes
+  
+  result = totalOnes - totalZeroes
 
-  col 0: 1
-  col 1: 4
-  col 2: 0
-  col 3: 3
-
-  max 1s in rows: 3 (3 1s)
-  max 1s in cols: 1 (4 1s)
-
-  Save the highest for both row and col.
-  Now add them together = 3 + 4 = 7
-
-  Possible number of pixels per row + col = 4 + 4 -1 = 7
-
-  Subtract possible 
 '''
+
+from itertools import product
+
 
 def calculateGreyness(pixels):
   rows = len(pixels)
@@ -92,15 +97,58 @@ def calculateGreyness(pixels):
   totalZeroes = totalPossibleOnes - totalOnes
 
   return totalOnes - totalZeroes
-
   
+class Solution:  
+  def calculateGreyness(self, pixels):
+    rows, cols = len(pixels), len(pixels[0])
+    maxRowIndices, maxColIndices = [], []
+    maxRowOnes = maxColOnes = 0
+    
+    for i, row in enumerate(pixels):
+      onesInCurrRow = row.count(1)
+      
+      if onesInCurrRow > maxRowOnes:
+        maxRowOnes = onesInCurrRow
+        maxRowIndices = [i]
+      elif onesInCurrRow == maxRowOnes:
+        maxRowIndices.append(i)
+    
+    for col in range(cols):
+      onesInCurrCol = 0
+      
+      for row in range(rows): 
+        onesInCurrCol += pixels[row][col]
+      
+      if onesInCurrCol > maxColOnes:
+        maxColOnes = onesInCurrCol
+        maxColIndices = [col]
+      elif onesInCurrCol == maxColOnes:
+        maxColIndices.append(col)
+    
+    # Search for a pair of (maxRow, maxCol) such that
+    # the intersection pixel is 0 (if possible). Otherwise use any.
+    bestCombo = (maxRowIndices[0], maxColIndices[0])
+    for row, col in product(maxRowIndices, maxColIndices):
+      if pixels[row][col] == 0:
+        bestCombo = (row, col)
+        break
+    
+    totalPossibleOnes = rows + cols - 1
+    totalOnes = maxRowOnes + maxColOnes - pixels[bestCombo[0]][bestCombo[1]]
+    totalZeroes = totalPossibleOnes - totalOnes
+    return totalOnes - totalZeroes
+      
+      
+  
+def runSolution():
+  solution = Solution()
+  print(solution.calculateGreyness([
+    [0 ,1 ,0 ,1],
+    [0 ,1 ,0 ,0],
+    [0 ,0 ,1 ,1],
+    [0 ,1 ,0 ,1]
+  ]))
+  pass
+runSolution()
 
 
-
-result = calculateGreyness([
-  [0 ,1 ,0 ,1],
-  [1 ,1 ,0 ,0],
-  [0 ,1 ,1 ,1],
-  [0 ,1 ,0 ,1]
-])
-print(result)
