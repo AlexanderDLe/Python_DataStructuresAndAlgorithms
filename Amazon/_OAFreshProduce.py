@@ -40,7 +40,7 @@
 from collections import deque
 
 
-class Solution1:
+class SolutionBruteForce:
   def stackProducts(self, products):
     maxVal = 0
     
@@ -72,6 +72,8 @@ class Solution:
     
     for i in range(n - 2, -1, -1):
       curr, next = products[i], products[i + 1]
+      print('---')
+      print(curr, next)
       
       if curr > next:
         # If curr is greater than (ans + next - 1) combined, then just restart
@@ -98,6 +100,6 @@ class Solution:
   
 def runSolution():
   solution = Solution()
-  print(solution.stackProducts([7, 4, 5, 2, 6, 5]))
+  print(solution.stackProducts([2, 7, 4, 5, 2, 6, 5]))
   pass
 runSolution()

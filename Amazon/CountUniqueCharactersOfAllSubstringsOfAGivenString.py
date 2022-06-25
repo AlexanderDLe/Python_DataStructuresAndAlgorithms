@@ -54,6 +54,9 @@
 
 '''
 
+from collections import defaultdict
+
+
 class SolutionRef:
   def countChars(str):
     n = len(str)
@@ -80,8 +83,29 @@ class SolutionRef:
     return result
   
 class Solution:
-  def countChars(str):
-    pass
+  def countChars(self, str):
+    n = len(str)
+    indiceMap = defaultdict(list)
+    
+    for i, char in enumerate(str):
+      indiceMap[char].append(i)
+      
+    result = 0
+    
+    for indices in list(indiceMap.values()):
+      for i, index in enumerate(indices):
+        leftBoundary  = indices[i - 1] if i > 0 else -1
+        rightBoundary = indices[i + 1] if i < len(indices) - 1 else n
+        
+        leftLen  = index - leftBoundary
+        rightLen = rightBoundary - index
+        
+        result += leftLen * rightLen
+        
+    
+    return result
+    
+    
   
 def runSolution():
   solution = Solution()

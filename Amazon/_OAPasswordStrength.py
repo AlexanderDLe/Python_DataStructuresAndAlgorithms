@@ -78,35 +78,41 @@
 
 import string
 
+class Solution:
+  def passwordStrength(self, str):
+    totalSubstrings = self.getSubstrCount(len(str))
+    total = 0
 
-def getSubstrCount(n):
-  return (n * (n + 1)) / 2
+    for char in string.ascii_lowercase:
+      if char not in str: continue
+      total += (totalSubstrings - self.getSegmentCounts(char, str))
+      
+    return total
 
-def getSegmentCounts(char, str):
-  segmentsTotal = 0
-  segmentLen = 0
 
-  for i in range(len(str)):
-    curr = str[i]
+  def getSegmentCounts(self, char, str):
+    segmentsTotal = 0
+    segmentLen = 0
 
-    if curr == char:
-      segmentsTotal += getSubstrCount(segmentLen)
-      segmentLen = 0
-    else:
-      segmentLen += 1
+    for i in range(len(str)):
+      curr = str[i]
 
-  segmentsTotal += getSubstrCount(segmentLen)
-  return segmentsTotal
+      if curr == char:
+        segmentsTotal += self.getSubstrCount(segmentLen)
+        segmentLen = 0
+      else:
+        segmentLen += 1
 
-def passwordStrength(str):
-  totalSubstrings = getSubstrCount(len(str))
-  total = 0
-
-  for char in string.ascii_lowercase:
-    if char not in str: continue
-    total += (totalSubstrings - getSegmentCounts(char, str))
-    
-  return total
+    segmentsTotal += self.getSubstrCount(segmentLen)
+    return segmentsTotal
   
-
-print(passwordStrength('aba'))
+  def getSubstrCount(self, n):
+    return (n * (n + 1)) / 2
+  
+  
+  
+def runSolution():
+  solution = Solution()
+  print(solution.passwordStrength('aba'))
+  pass
+runSolution()

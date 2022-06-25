@@ -1,0 +1,18 @@
+Requirements
+1. Functional
+2. Non-Functional
+3. Clarify Priority Areas
+4. Capacity Estimations
+  a. Traffic
+  b. Storage
+  c. Bandwidth
+
+High Level Design
+1. API Design
+2. Data Models and Design
+3. Diagram for main flows.
+
+Deep Dive/Bottleneck Resolutions:
+1. Scalability
+2. Availability
+3. Reliability/Durability

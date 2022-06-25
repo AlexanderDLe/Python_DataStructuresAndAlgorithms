@@ -10,6 +10,7 @@ class SolutionContributions:
     n = len(nums)
 
     oddArr = self.buildOddArray(nums, n)
+    print(nums, oddArr)
     result = 0
     L, R = 1, k
     

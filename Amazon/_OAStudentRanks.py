@@ -64,7 +64,8 @@
   
   Example: [1, 3, 5, 4, 2] 
 
-  For 3, we only focus on [3, 5] as a contribution instead of [1, 3]. ie. Consider only next elements
+  For 3, we only focus on [3, 5] as a contribution instead of [1, 3]. 
+  ie. Consider only next elements
 
   -------------------------------------------------------------------------------------------
 

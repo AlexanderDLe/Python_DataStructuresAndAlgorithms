@@ -17,6 +17,7 @@ class Solution:
     for start in map(str, (P-1, P, P + 1)):
       candidates.append(start + (start[:-1] if K%2 else start)[::-1])
     
+    print(candidates, prefix)
     def delta(x):
       return abs(int(S) - int(x))
     
@@ -33,7 +34,8 @@ class Solution:
 
 def runSolution():
   solution = Solution()
-  print(solution.nearestPalindromic(S = "123"))
-  print(solution.nearestPalindromic(S = "1"))
+  print(solution.nearestPalindromic(S = "12345"))
+  # print(solution.nearestPalindromic(S = "123"))
+  # print(solution.nearestPalindromic(S = "1"))
   pass
 runSolution()

@@ -47,7 +47,6 @@ def depthSumInverse(nestedInteger):
     for item in nestedInt:
       if item.isInteger():
         total += (item.getInteger() * weight)
-        print(item.getInteger(), weight, depth, maxDepth)
       else:
         total += process(item.getList(), depth + 1)
     return total

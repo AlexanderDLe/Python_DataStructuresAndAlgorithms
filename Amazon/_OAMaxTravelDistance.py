@@ -12,6 +12,10 @@
   no other combination is there which is >9000 and <=11,000.......0(n^2) solution is 
   straight forward, thinking that sorting both might help.
 
+  ------------------------------------------------
+  
+  [1,3000] [2,5000] [3,4000] [4,10000]
+  [3,4000] [2,3000] [1,2000]
 '''
 
 def maxDistance(forward, backward, maxDistance):

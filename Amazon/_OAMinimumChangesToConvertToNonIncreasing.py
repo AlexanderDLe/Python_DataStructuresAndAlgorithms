@@ -31,6 +31,8 @@
 
   ---------------------------------------------------------------------------
 
+  pq = minHeap
+
   [3, 1, 2, 1]
          ^
 
@@ -169,7 +171,11 @@ def minChanges(nums):
 
 # print(minChanges([3, 1, 2, 1]))
 # print(minChanges([3, 1, 5, 1]))
-# print(minChanges([1, 5, 5, 5]))
+print(minChanges([1, 1, 5, 5, 5]))
 # print(minChanges([5,2,11,4,2,6]))
-print(minChanges([2,3,4,7]))
+# print(minChanges([2,3,4,7]))
+# print(minChanges([2,2,2,7]))
+# print(minChanges([2,7,2,7]))
+# print(minChanges([7,2,2,2,7,2]))
+# print(minChanges([2,7,2,2,7,2]))
 # print(minChanges([22,44,2,5,15,35,46,2,5,35]))

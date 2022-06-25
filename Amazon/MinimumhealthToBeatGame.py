@@ -2,10 +2,20 @@
 
   2214. Minimum Health to Beat Game
 
+  [2,7,4,3] armor = 4
+  
+  7 is highest damage taken in one round.
+  4 is armor value.
+  
+  MitigatedDamage = 7 - 4 = 3
+  
+  If 3 was highest damage, then bound is damage.
+  MitigatedDamage = 3 - 4 should be 3. max(maxDamage - armor, maxDamage)
+  
 '''
 
 
-class Solution:
+class SolutionRef:
   def minimumHealth(self, damage, armor):
     totalDamage = sum(damage)
     maxDamage = max(damage)
@@ -15,6 +25,15 @@ class Solution:
     totalDamageAfterMitigation = totalDamage - maxDamage + mitigatedDamage
     minimumRequireHealth = totalDamageAfterMitigation + 1
     return minimumRequireHealth
+    
+class Solution:
+  def minimumHealth(self, damage, armor):
+    totalDamage = sum(damage)
+    maxDamage = max(damage)
+    damageTakenForMax = max(maxDamage - armor, 0)
+    damageMitigated = maxDamage - damageTakenForMax
+    
+    return totalDamage - damageMitigated + 1
     
   
 def runSolution():

@@ -200,5 +200,56 @@ def sumofSubarrayMinimums(nums):
 
   return int(totalSum)
 
-print(sumofSubarrayMinimums([71,55,82,55]))
-# print(sumofSubarrayMinimums([2, 9, 7, 8, 3, 4, 6, 1]))
+
+class Solution:
+  def buildPLE(self, nums, n):
+    stack = []
+    PLE = [-1]  * n
+
+    for i in range(n):
+      curr = nums[i]
+      while stack and curr < nums[stack[-1]]: stack.pop()    
+      PLE[i] = (i - stack[-1]) if stack else (i + 1)
+      stack.append(i)
+
+    return PLE
+
+  def buildNLE(self, nums, n):
+    stack = []
+    count = 1
+    NLE = [n] * n
+
+    for i in range(n - 1, -1, -1):
+      curr = nums[i]
+      while stack and curr <= nums[stack[-1]]: stack.pop()
+      NLE[i] = (stack[-1] - i) if stack else (count)
+      stack.append(i)
+      count += 1
+
+    return NLE
+
+  def sumofSubarrayMinimums(self, nums):
+    n = len(nums)
+
+    PLE = self.buildPLE(nums, n)
+    NLE = self.buildNLE(nums, n)
+
+    print(PLE)
+    print(NLE)
+
+    totalSum = 0
+    for i in range(n):
+      totalSubarrays = PLE[i] * NLE[i]
+      totalValue = nums[i] * totalSubarrays
+      totalSum = (totalSum + totalValue) % (1e9 + 7)
+
+    return int(totalSum)
+
+
+  
+def runSolution():
+  solution = Solution()
+  print(solution.sumofSubarrayMinimums([71,55,82,55]))
+  print(solution.sumofSubarrayMinimums([2, 9, 7, 8, 3, 4, 6, 1]))
+  pass
+runSolution()

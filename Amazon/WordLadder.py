@@ -45,7 +45,7 @@ class SolutionRef:
 
     return []
   
-class Solution:
+class Solution1:
   def findLadders(self, beginWord, endWord, wordList):
     remainingWords = set(wordList)
     remainingWords.discard(beginWord)
@@ -54,6 +54,8 @@ class Solution:
     
     while level:
       nextLevel = defaultdict(list)
+      print(level)
+      print('----')
       
       for word, paths in level.items():
         if word == endWord: return paths
@@ -76,10 +78,10 @@ class Solution:
     
     return neighbors
     
-    
+
   
 def runSolution():
-  solution = Solution()
+  solution = Solution1()
   print(solution.findLadders(beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log","cog"]))
   # print(solution.findLadders(beginWord = "hit", endWord = "cog", wordList = ["hot","dot","dog","lot","log"]))
   pass

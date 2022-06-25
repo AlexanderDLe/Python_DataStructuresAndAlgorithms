@@ -61,19 +61,19 @@
 
 '''
 
-class SolutionRef:
-  def printAll(self, arr, PLE, NLE, PGE, NGE):
-    print('arr')
-    print(arr)
-    print('PLE')
-    print(PLE)
-    print('NLE')
-    print(NLE)
-    print('PGE')
-    print(PGE)
-    print('NGE')
-    print(NGE)
-
+def printAll(arr, PLE, NLE, PGE, NGE):
+  print('arr')
+  print(arr)
+  print('PLE')
+  print(PLE)
+  print('NLE')
+  print(NLE)
+  print('PGE')
+  print(PGE)
+  print('NGE')
+  print(NGE)
+  
+class SolutionRef:  
   def sumOfSubarrayRanges(self, arr):
     getStackTop = lambda st: arr[st[-1]]
 
@@ -111,7 +111,7 @@ class SolutionRef:
             st.pop()
         st.append(i)
     
-    self.printAll(arr, PLE, NLE, PGE, NGE)
+    printAll(arr, PLE, NLE, PGE, NGE)
     
     minRes = 0  
     for i in range(n):
@@ -121,9 +121,9 @@ class SolutionRef:
         if NLE[i] == -1: rightDiff = n - 1 - i
         else           : rightDiff = (NLE[i] - i) - 1
         
-        print(f'arr[i]: {arr[i]} | leftDiff: {leftDiff} | rightDiff: {rightDiff} | ', arr[i] * (leftDiff + 1) * (rightDiff + 1))
+        # print(f'arr[i]: {arr[i]} | leftDiff: {leftDiff} | rightDiff: {rightDiff} | ', arr[i] * (leftDiff + 1) * (rightDiff + 1))
         minRes += arr[i] * (leftDiff + 1) * (rightDiff + 1)
-    print(f'minRes: {minRes}')
+    # print(f'minRes: {minRes}')
 
     maxRes = 0
     for i in range(n):
@@ -138,10 +138,93 @@ class SolutionRef:
     return maxRes - minRes
 
 
+'''
+    Important note:
+    
+    Why do we use <= and >= for PLE and PGE but not for NLE and NGE?
+    It is because we do not want duplicate results.
+    
+    [1,3,3]
+    PLE = [-1, 0, 0]
+    NLE = [3, 2, 3]
+    
+    [1,3,3]
+     ^
+    Lesser range: [1,3,3]
+    
+    [1,3,3]
+       ^
+    Lesser range: [1,3]   <--- If we extend NLE to [1,3,3], it would
+                               be a duplicate of the following range.
+    [1,3,3]
+         ^
+    Lesser range: [1,3,3]
+        
+      
+'''
+      
+class Solution:
+  def sumOfSubarrayRanges(self, nums):
+    n = len(nums)
+    PLE, NLE, PGE, NGE = self.init(nums, n)
+    printAll(nums, PLE, NLE, PGE, NGE)
+    minRes = maxRes = 0
+    for i in range(n):
+      # Calculate min res
+      leftLen  = i - PLE[i]
+      rightLen = NLE[i] - i
+      minRes += nums[i] * (leftLen * rightLen)
+      
+      # Calculate max res
+      leftLen  = i - PGE[i]
+      rightLen = NGE[i] - i
+      maxRes += nums[i] * (leftLen * rightLen)
+    
+    return maxRes - minRes
+
+    
+    
+  def init(self, nums, n):
+    getStackTop = lambda s: nums[s[-1]]
+    PLE, PGE = [-1] * n, [-1] * n
+    NLE, NGE = [n] * n, [n] * n
+    
+    Lstack = []
+    Gstack = []
+    for i, num in enumerate(nums):
+      while Lstack and num <= getStackTop(Lstack): Lstack.pop()
+      if Lstack: PLE[i] = Lstack[-1]
+      Lstack.append(i)
+      
+      while Gstack and num >= getStackTop(Gstack): Gstack.pop()
+      if Gstack: PGE[i] = Gstack[-1]
+      Gstack.append(i)
+    
+    Lstack = []
+    Gstack = []
+    for i in range(n - 1, -1, -1):
+      num = nums[i]
+      
+      while Lstack and num < getStackTop(Lstack): Lstack.pop()
+      if Lstack: NLE[i] = Lstack[-1]
+      Lstack.append(i)
+      
+      while Gstack and num > getStackTop(Gstack): Gstack.pop()
+      if Gstack: NGE[i] = Gstack[-1]
+      Gstack.append(i)
+    
+    
+    return PLE, NLE, PGE, NGE
+    
+
+
 
 
 def runSolution():
-  solution = SolutionRef()
-  print(solution.sumOfSubarrayRanges([1,2,3]))
+  solution = Solution()
+  # print(solution.sumOfSubarrayRanges([1,2,3]))
+  print(solution.sumOfSubarrayRanges([1,3,3]))
+  # print(solution.sumOfSubarrayRanges([5,3,4]))
+  # print(solution.sumOfSubarrayRanges([4,-2,-3,4,1]))
   pass
 runSolution()

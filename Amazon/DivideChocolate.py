@@ -118,39 +118,62 @@
 
   etc...
 '''
-import os, sys
-currentdir = os.path.dirname(os.path.realpath(__file__))
-parentdir = os.path.dirname(currentdir)
-sys.path.append(parentdir)
 
-from _utils import printMatrix
+class SolutionRef:
+  def divideChocolate(self, sweetnessArr, k):
+    total = sum(sweetnessArr)
+    L = min(sweetnessArr)
+    R = total // (k + 1)
 
+    while L < R:
+      M = (L + R + 1) // 2
+      cuts = 0
+      curr = 0
 
-def divideChocolate(sweetnessArr, k):
-  total = sum(sweetnessArr)
-  L = min(sweetnessArr)
-  R = total // (k + 1)
+      for sweetness in sweetnessArr:
+        curr += sweetness
 
-  while L < R:
-    M = (L + R + 1) // 2
-    chunks = 0
-    currSweetness = 0
+        if curr >= M:
+          cuts += 1
+          curr = 0
+      
+      if cuts >= k + 1: L = M
+      else            : R = M - 1
 
-    for sweetness in sweetnessArr:
-      currSweetness += sweetness
-
-      if currSweetness >= M:
-        chunks += 1
-        currSweetness = 0
+    return L
+  
+class Solution:
+  def divideChocolate(self, sweetnessArr, k):
+    self.sweetnessArr, self.k = sweetnessArr, k
+    L, R = min(sweetnessArr), sum(sweetnessArr)
     
-    if chunks >= k + 1: L = M
-    else: R = M - 1
-
-  return L
-
+    while L < R:
+      M = L + (R - L + 1)//2
+      
+      if self.notFeasible(M): L = M
+      else                  : R = M - 1
+    
+    return L  
   
   
-
-print(divideChocolate([1,2,3,4,5,6,7,8,9], 5))
-print(divideChocolate([5,6,7,8,9,1,2,3,4], 8))
-print(divideChocolate([1,2,2,1,2,2,1,2,2], 2))
+  def notFeasible(self, minSweetness):
+    chunks = 0
+    curr = 0
+    
+    for sweetness in self.sweetnessArr:
+      curr += sweetness
+      
+      if curr >= minSweetness:
+        chunks += 1
+        curr = 0
+    
+    return chunks < self.k + 1
+    
+  
+def runSolution():
+  solution = Solution()
+  print(solution.divideChocolate([1,2,3,4,5,6,7,8,9], 5))
+  # print(solution.divideChocolate([5,6,7,8,9,1,2,3,4], 8))
+  # print(solution.divideChocolate([1,2,2,1,2,2,1,2,2], 2))
+  pass
+runSolution()
