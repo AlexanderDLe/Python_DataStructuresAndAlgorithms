@@ -45,7 +45,7 @@
   
 '''
 
-class Solution:
+class SolutionRef:
   def minCostClimbingStairs(self, cost):
     if len(cost) == 0: return 0
     if len(cost) == 1: return cost[0]
@@ -57,6 +57,22 @@ class Solution:
       cost[i] += min(next1, next2)
     
     return min(cost[0], cost[1])
+
+class Solution:
+  def minCostClimbingStairs(self, cost):
+    n = len(cost)
+    if n == 0: return 0
+    if n == 1: return cost[0]
+    cost.append(0)
+
+    for i in range(n - 2, -1, -1):
+      next1 = cost[i + 1]
+      next2 = cost[i + 2] if i < n - 2 else 0
+      cost[i] += min(next1, next2)
+      
+    
+    return min(cost[0], cost[1])
+    
 
 
 def runSolution():

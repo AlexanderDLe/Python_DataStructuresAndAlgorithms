@@ -3,8 +3,7 @@
 # Requirements
 
 # Users
--Users can book tickets at a specific theater
--Users can purchase and reserve multiple tickets per order
+-Users can book/purchase tickets at a specific theater
 -Users can browser movies and based on title, category, genre, city
 -Users should be able to pay with credit cards
 -Users Admins can create/delete shows
@@ -12,7 +11,7 @@
 # Theaters
 -Booking a ticket reserves a seat at a particular theater
 -A theater keeps track of its available seats and will not allow
--rebooking a seat that has already been reserved
+ rebooking a seat that has already been reserved
 -Theaters have a defined number of seats per room
 -Theaters have various number of shows playing, 
 

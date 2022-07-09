@@ -4,7 +4,6 @@
 
 '''
 
-
 class SolutionFirstAttempt:
   def asteroidCollision(self, asteroids):
     stack = []
@@ -42,7 +41,7 @@ class SolutionFirstAttempt:
         
     return stack
   
-class Solution:
+class SolutionRef:
   def asteroidCollision(self, asteroids):
     stack = []
     
@@ -62,6 +61,31 @@ class Solution:
         elif stack[-1] == -num:
           stack.pop()
     
+    return stack
+  
+class Solution:
+  def asteroidCollision(self, asteroids):
+    stack = []
+    
+    for num in asteroids:
+      if num > 0:
+        stack.append(num)
+        continue
+      
+      # If incoming is greater than prev positives, then destroy prev positives
+      while stack and stack[-1] > 0 and stack[-1] < abs(num):
+        stack.pop()
+        
+      # If prev positive is equal, then destroy both
+      if stack and stack[-1] > 0 and stack[-1] == abs(num):
+        stack.pop()
+        continue
+      
+      # At this point, incoming negative may be smaller, so only append if stack
+      # is empty or prev element is also negative.
+      if not stack or stack[-1] < 0:
+        stack.append(num)
+        
     return stack
   
   

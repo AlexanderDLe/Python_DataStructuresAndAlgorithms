@@ -5,9 +5,7 @@
 '''
 
 from collections import defaultdict, deque
-import heapq
-from itertools import count
-import itertools
+from heapq import heappush, heappop
 
 class Twitter:
   def __init__(self):
@@ -28,14 +26,14 @@ class Twitter:
           if followeeId in self.tweetMap:
               index = len(self.tweetMap[followeeId]) - 1
               count, tweetId = self.tweetMap[followeeId][index]
-              heapq.heappush(minHeap, [count, tweetId, followeeId, index - 1])
+              heappush(minHeap, [count, tweetId, followeeId, index - 1])
 
       while minHeap and len(res) < 10:
-          count, tweetId, followeeId, index = heapq.heappop(minHeap)
+          count, tweetId, followeeId, index = heappop(minHeap)
           res.append(tweetId)
           if index >= 0:
               count, tweetId = self.tweetMap[followeeId][index]
-              heapq.heappush(minHeap, [count, tweetId, followeeId, index - 1])
+              heappush(minHeap, [count, tweetId, followeeId, index - 1])
       return res
 
   def follow(self, followerId: int, followeeId: int):

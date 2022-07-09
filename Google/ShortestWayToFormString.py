@@ -7,6 +7,7 @@
 
 from bisect import bisect, bisect_left
 from collections import defaultdict, deque
+from operator import invert
 
 
 class SolutionMyDP:
@@ -31,7 +32,7 @@ class SolutionMyDP:
     result = DFS(0)
     return result if result != float('inf') else -1
   
-class Solution:
+class SolutionBinarySearch:
   def shortestWay(self, source, target):
     invertedIndex = defaultdict(list)
     for i, char in enumerate(source):
@@ -55,10 +56,10 @@ class Solution:
         i = offsetListForChar[j] + 1
     
     return loopCount
-  
+
 
 def runSolution():
-  solution = Solution()
+  solution = SolutionBinarySearch()
   print(solution.shortestWay(source = "abc", target = "abcbc"))
   print(solution.shortestWay(source = "abc", target = "acdbc"))
   print(solution.shortestWay(source = "xyz", target = "xzyxz"))

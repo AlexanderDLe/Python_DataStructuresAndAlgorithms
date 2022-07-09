@@ -32,27 +32,34 @@ class SolutionRef:
     
     self.traverse(n.right)
     
-  
+    
+'''
 
+  3 > 2 > 1
+  p       c
+
+'''
+    
 class Solution:
   def recoverTree(self, root):
-    self.prev  = TreeNode(float('-inf'))
+    self.prev = TreeNode(float('-inf'))
     self.nodeA = None
     self.nodeB = None
     
-    self.traverse(root)
-  
-  def traverse(self, n):
+    self.DFS(root)
+    self.nodeA.val, self.nodeB.val = self.nodeB.val, self.nodeA.val
+    
+  def DFS(self, n):
     if not n: return
+    self.DFS(n.left)
     
-    self.traverse(n.left)
-    
-    if self.nodeA == None and self.prev.val >= n.val: self.nodeA = self.prev
-    if self.nodeA != None and self.prev.val >= n.val: self.nodeB = n
+    if self.nodeA == None and n.val < self.prev.val: self.nodeA = self.prev
+    if self.nodeA != None and n.val < self.prev.val: self.nodeB = n
     self.prev = n
     
-    self.traverse(n.right)
-  
+    self.DFS(n.right)
+    
+    
 
 def runSolution():
   t1 = TreeNode(1)

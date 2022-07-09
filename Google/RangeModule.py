@@ -16,7 +16,7 @@ class RangeModuleRef:
       
     def addRange(self, left, right, track=True):
       def index(val):
-        i = bisectL(self.range, val)
+        i = bisect_left(self.range, val)
         if self.range[i] != val:
           self.range.insert(i, val)
           self.valid.insert(i, self.valid[i - 1])

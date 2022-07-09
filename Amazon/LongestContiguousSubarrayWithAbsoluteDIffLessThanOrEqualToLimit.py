@@ -67,7 +67,7 @@ class SolutionRef:
 
     return maxLen
   
-class Solution:
+class Solution1:
   def longestSubarray(self, nums, limit):
     getQDiff  = lambda: abs(getQFront(maxQ) - getQFront(minQ))
     getQLast  = lambda Q: nums[Q[-1]]
@@ -95,6 +95,10 @@ class Solution:
       result = max(result, R - L)
     
     return result
+  
+class Solution:
+  def longestSubarray(self, nums, limit):
+    pass
   
 def runSolution():
   solution = Solution()

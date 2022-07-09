@@ -13,6 +13,8 @@
   [0, 0, 0]
 '''
 
+from collections import deque
+from heapq import heappush, heappop
 import heapq
 
 
@@ -51,35 +53,37 @@ class SolutionRef:
   
 class Solution:
   def amountPainted(self, paint):
-    n = len(paint)
-    records, maxPos = [], 0
+    START, END = 'START', 'END'
+    endPos = 0
+    records = []
     
     for i, (start, end) in enumerate(paint):
-      maxPos = max(maxPos, end)
-      records.append((start, i, 'START'))
-      records.append((end, i, 'END'))
+      records.append((start, i, START))
+      records.append((end, i, END))
+      endPos = max(endPos, end)
+      
     records.sort()
-    
-    result = n * [0]
-    minHeap, endSet = [], set()
+    result = [0] * len(paint)
+    minHeap = []
+    ended = set()
     i = 0
     
-    for pos in range(maxPos + 1):
-      while i < len(records) and records[i][0] == pos:
-        pos, index, type = records[i]
+    for pos in range(endPos + 1):
+      while i < len(records) and pos == records[i][0]:
+        _, index, type = records[i]
         
-        if type == 'START': heapq.heappush(minHeap, index)
-        if type == 'END'  : endSet.add(index)
+        if type == START: heappush(minHeap, index)
+        if type == END  : ended.add(index)
         i += 1
-        
-      while minHeap and minHeap[0] in endSet: heapq.heappop(minHeap)
+      
+      while minHeap and minHeap[0] in ended: heappop(minHeap)
       if minHeap: result[minHeap[0]] += 1
-    
+      
     return result
-  
 
 def runSolution():
   solution = Solution()
-  print(solution.amountPainted(paint = [[1,4],[4,7],[5,8]]))
+  # print(solution.amountPainted(paint = [[1,4],[4,7],[5,8]]))
+  print(solution.amountPainted(paint = [[0,10]]))
   pass
 runSolution()

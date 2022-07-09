@@ -10,7 +10,6 @@
   
 '''
 
-import heapq
 
 class SolutionRef:
   def tilingRectangle(self, rows, cols):
@@ -56,13 +55,44 @@ class SolutionRef:
   
 class Solution:
   def tilingRectangle(self, rows, cols):
-    pass
+    self.best = float('inf')
+    heights = [0] * cols
+    self.heights = heights
+    
+    def DFS(moves):
+      if all(h == rows for h in heights):
+        self.best = min(self.best, moves)
+        return
+      
+      if moves >= self.best: return
+      
+      # Get start & end positions of bottom-most square
+      minHeight = min(self.heights)
+      L = self.heights.index(minHeight)
+      R = L + 1
+      while R < cols and heights[R] == minHeight:
+        R += 1
+      
+      maxLength = min(R - L, rows - minHeight)
+      
+      for length in range(maxLength, 0, -1):
+        for i in range(L, L + length):
+          heights[i] += length
+          
+        DFS(moves + 1)
+      
+        for i in range(L, L + length):
+          heights[i] -= length
+    
+    DFS(0)
+    return self.best
+  
   
 
 def runSolution():
   solution = Solution()
   print(solution.tilingRectangle(rows = 2, cols = 3))
-  # print(solution.tilingRectangle(n = 5, m = 8))
-  # print(solution.tilingRectangle(n = 11, m = 13))
+  print(solution.tilingRectangle(rows = 5, cols = 8))
+  print(solution.tilingRectangle(rows = 11, cols = 13))
   pass
 runSolution()
