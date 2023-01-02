@@ -1,13 +1,6 @@
 '''
 
-  424. Longest Repeating Character Replacement
-  
-  10  5  2  6
-      L  R
-  
-  product = 5
-  
-  count = 1 + 2
+  Subarray Product Less Than K
   
 '''
 

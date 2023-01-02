@@ -4,7 +4,7 @@
   
 '''
 
-class Solution:
+class SolutionRef1:
   def nthMagicalNumber(self, n, a, b):
     a, b = min(a, b), max(a, b)
     
@@ -37,10 +37,31 @@ class Solution:
     return self.getGCD(b, a % b)
     
     
+class Solution:
+  def nthMagicalNumber(self, n, a, b):
+    mod = 10**9+7
+    
+    LCM = a * b / self.GCD(a, b) # Least common multiple
+    L, R = min(a, b), min(a, b) * n
+    
+    while L <= R:
+      M = (L + R) // 2
+      
+      curr = (M // a) + (M // b) - (M // LCM)
+      
+  
+  def GCD(self, a, b):
+    while b > 0:
+      temp = b
+      b = a % b
+      a = temp
+    return a
+    
+    
   
 def runSolution():
   solution = Solution()
   print(solution.nthMagicalNumber(n = 1, a = 2, b = 3))
-  print(solution.nthMagicalNumber(n = 4, a = 2, b = 3))
+  # print(solution.nthMagicalNumber(n = 4, a = 2, b = 3))
   pass
 runSolution()

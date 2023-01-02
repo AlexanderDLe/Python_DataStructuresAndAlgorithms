@@ -13,14 +13,14 @@ class Solution:
       copy = DP.copy()
       currCosts = costs[row]
       
-      for color in range(n):
+      for colorA in range(n):
         rowMin = float('inf')
         
-        for k in range(n):
-          if color == k: continue
-          rowMin = min(rowMin, copy[k])
+        for colorB in range(n):
+          if colorA == colorB: continue
+          rowMin = min(rowMin, copy[colorB])
         
-        DP[color] = currCosts[color] + rowMin
+        DP[colorA] = currCosts[colorA] + rowMin
     
     return min(DP)
   

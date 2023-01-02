@@ -40,7 +40,7 @@ class FileSystem:
       node = node.setdefault(item, {})
     
     if 'content' in node: node['content'] += content
-    else                : node['content'] = content
+    else                : node['content']  = content
 
   def readContentFromFile(self, filePath):
     node = self.trie

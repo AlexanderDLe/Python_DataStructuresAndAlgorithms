@@ -27,7 +27,7 @@
 - Airlines
 - Aircraft
 - Seat
-- Airlines HAVE Aircrafts
+- Airlines HAVE Flights
 - Aircrafts HAVE Seats
 
 - Flights

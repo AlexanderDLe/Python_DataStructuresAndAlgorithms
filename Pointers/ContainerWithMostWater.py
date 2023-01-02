@@ -4,7 +4,7 @@
 
 '''
 
-class Solution:
+class SolutionRef:
   def maxArea(self, height):
     mostWater = 0
     n = len(height)
@@ -23,6 +23,34 @@ class Solution:
       else                    : R -= 1
     
     return mostWater
+  
+class Solution:
+  
+  '''
+  
+    Time Complexity
+    O(n) to iterate through heights
+    
+    Space Complexity
+    O(1)
+  
+  '''
+  
+  def maxArea(self, height):
+    mostWater = 0
+    L, R = 0, len(height) - 1
+    
+    while L < R:
+      minHeight = min(height[L], height[R])
+      distance = R - L
+      currentWater = minHeight * distance
+      mostWater = max(mostWater, currentWater)
+      
+      if height[L] < height[R]: L += 1
+      else                    : R -= 1
+    
+    return mostWater
+  
   
 def runSolution():
   solution = Solution()

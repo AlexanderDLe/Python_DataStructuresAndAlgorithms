@@ -42,7 +42,7 @@ class Solution:
   def getPatterns(self, word):
     patterns, n = [], len(word)
     for i in range(n):
-      patterns.append(word[0:i] + '*' + word[i + 1:n + 1])
+      patterns.append(word[:i] + '*' + word[i + 1:])
     return patterns
 
 

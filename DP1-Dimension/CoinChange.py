@@ -9,11 +9,12 @@ class Solution:
     DP = [float('inf')] * (amount + 1)
     DP[0] = 0
     
-    for coin in coins:
-      for total in range(1, len(DP)):
+    for total in range(1, len(DP)):
+      for coin in coins:
         if coin <= total and DP[total - coin] != float('inf'):
           DP[total] = min(DP[total], DP[total - coin] + 1)
     
+    print(DP)
     return DP[-1] if DP[-1] != float('inf') else -1
   
 def runSolution():

@@ -17,7 +17,7 @@
   2. Loop and increment lower case chars in alphabet array to store which chars
      are lower cased and frequency of the char:
 
-      a  b  c  d  e  f  g
+     a  b  c  d  e  f  g
     [0, 0, 0, 0, 2, 0, 1, etc...]
     
   3. Traverse input array and for every lower case character, we place the earliest valid lower-case char found in alphabet array.

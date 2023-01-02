@@ -23,7 +23,7 @@ class Solution:
     
     return DFS(0, -1)
     
-    
+
   
 def runSolution():
   solution = Solution()

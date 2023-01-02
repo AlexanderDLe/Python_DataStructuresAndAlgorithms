@@ -4,7 +4,7 @@
 
 '''
 
-class Solution:
+class SolutionRef:
   def maxProfit(self, prices):
     minPrice = prices[0]
     maxProfit = 0
@@ -14,6 +14,18 @@ class Solution:
       maxProfit = max(maxProfit, curr - minPrice)
       minPrice = min(minPrice, curr)
       
+    return maxProfit
+
+class Solution:
+  def maxProfit(self, prices):
+    maxProfit = 0
+    minCost = prices[0]
+    
+    for i in range(1, len(prices)):
+      price = prices[i]
+      maxProfit = max(maxProfit, price - minCost)
+      minCost = min(minCost, price)
+    
     return maxProfit
   
 def runSolution():

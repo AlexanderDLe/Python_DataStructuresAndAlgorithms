@@ -11,9 +11,9 @@ class SolutionAllCheck:
     while L <= R:
       M = (L + R + 1)//2
       
-      if nums[M] == target: return M
-      if nums[M] > target : R = M - 1
-      else                : L = M + 1
+      if   nums[M] == target: return M
+      elif nums[M] >  target: R = M - 1
+      elif nums[M] <  target: L = M + 1
     
     return -1
 

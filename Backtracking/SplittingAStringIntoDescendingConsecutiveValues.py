@@ -9,9 +9,7 @@ class Solution:
     n = len(s)
     
     def backtrack(index, parts, prev):
-      if index == n:
-        if parts > 1: return True
-        return False
+      if index == n: return parts > 1
       
       for i in range(index, n):
         val = int(s[index:i+1])

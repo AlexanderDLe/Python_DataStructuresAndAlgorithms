@@ -15,7 +15,7 @@
 
 from collections import Counter
 
-class Solution:
+class SolutionRef:
   def checkInclusion(self, s1, s2):
     n = len(s1)
     freqDict = Counter(s1)
@@ -41,9 +41,33 @@ class Solution:
     
     return False
   
+
+class Solution:
+  def checkInclusion(self, s1, s2):
+    freqDict = Counter(s1)
+    uniqueChars = len(freqDict.keys())
+    charsSatisfied = L = 0
+    
+    for R, Rchar in enumerate(s2):
+      if Rchar in freqDict: 
+        freqDict[Rchar] -= 1
+        if freqDict[Rchar] == 0: charsSatisfied += 1
+    
+      if charsSatisfied == uniqueChars: return True
+      
+      if R >= len(s1) - 1:
+        Lchar = s2[L]
+        if Lchar in freqDict: 
+          freqDict[Lchar] += 1
+          if freqDict[Lchar] == 1: charsSatisfied -= 1
+        L += 1
+    
+    return False
+  
 def runSolution():
   solution = Solution()
   print(solution.checkInclusion(s1 = "ab", s2 = "eidbaooo"))
   print(solution.checkInclusion(s1 = "ab", s2 = "eidboaoo"))
+  print(solution.checkInclusion("abcdxabcde", "abcdeabcdx"))
   pass
 runSolution()

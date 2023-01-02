@@ -1,8 +1,16 @@
 '''
 
-  217. Contains Duplicate
+  128. Longest Consecutive Sequence
+
+  0  3  7  2  5  8  4  6  0  1
+        ^
+ 
+  LCS = [0, 3, 7]
 
 '''
+
+
+from bisect import bisect_left
 
 
 class Solution:
@@ -22,6 +30,7 @@ class Solution:
     
     return longest
   
+
 def runSolution():
   solution = Solution()
   print(solution.longestConsecutive(nums = [100,4,200,1,3,2]))

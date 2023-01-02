@@ -53,10 +53,9 @@ class Solution:
         continue
     
       node = node[char]
-      indices = node['indices']
       res = []
       
-      for i in indices:
+      for i in node['indices']:
         res.append(products[i])
       
       result.append(res)

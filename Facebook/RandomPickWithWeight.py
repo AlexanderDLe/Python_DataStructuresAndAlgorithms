@@ -29,11 +29,10 @@
 
 '''
 
-import math
 from random import randrange
 
 
-class Solution:
+class SolutionRef:
   def __init__(self, w):
     self.sums = []
     self.total = 0
@@ -60,7 +59,46 @@ class Solution:
       if rand >= curr : L = M + 1
 
     return L
+  
+  
+class Solution:
+  def __init__(self, w):
+    self.prefixes = [0] * len(w)
+    self.total = 0
+    
+    for i, weight in enumerate(w):
+      self.total += weight
+      self.prefixes[i] = self.total
+      
+
+  def pickIndex(self):
+    prefixes, total = self.prefixes, self.total
+    randNum = randrange(0, total)
+    randNum = 6
+    
+    L, R = 0, len(prefixes) - 1
+    print(prefixes, randNum)
+    print('\n   ', 'V', 'L', 'R', 'M')
+    
+    while L < R:
+      M = (L + R) // 2
+      val = prefixes[M]
+      
+      print('B: ', val, L, R, M)
+      
+      if val <= randNum: L = M + 1
+      else             : R = M
+      
+      print('A: ', val, L, R, '\n')
+    
+    return L
 
 
-solution = Solution([2,1,4,5])
-print(solution.pickIndex())
+
+def runSolution():
+  solution = Solution([2,1,4,5])
+  print(solution.pickIndex())
+  # print(solution.pickIndex())
+  # print(solution.pickIndex())
+  pass
+runSolution()

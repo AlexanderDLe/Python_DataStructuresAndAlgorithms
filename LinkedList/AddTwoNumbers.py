@@ -13,7 +13,7 @@ from DataStrucutres import ListNode, createList
 from _utils import printLinkedList
 
 
-class Solution:
+class Solution1:
   def addTwoNumbers(self, l1, l2):
     dum = ListNode(0)
     cur = dum
@@ -33,6 +33,35 @@ class Solution:
       cur = cur.next
       
     
+    return dum.next
+  
+  
+class Solution:
+  
+  '''
+    Time Complexity : O(n) 1 Pass through both lists
+    Space Complexity: O(n) n is the length of the longest list
+  '''
+  
+  def addTwoNumbers(self, l1, l2):
+    dum = ListNode(0)
+    curr = dum
+    carry = 0
+    
+    while l1 or l2 or carry:
+      val1 = l1.val if l1 != None else 0
+      val2 = l2.val if l2 != None else 0
+      
+      sum = val1 + val2 + carry
+      carry = sum // 10
+      sum %= 10
+      
+      curr.next = ListNode(sum)
+      curr = curr.next
+      
+      if l1: l1 = l1.next
+      if l2: l2 = l2.next
+      
     return dum.next
   
 

@@ -23,23 +23,23 @@ import heapq
 
 
 class Solution1:
-  def calculateWaitTime(self, N, M, T):
-    W = [0] * len(T)
+  def calculateWaitTime(self, agents, customers, agentTimes):
+    W = [0] * len(agentTimes)
 
-    for _ in range(M):
+    for _ in range(customers):
       min = float('inf')
       agent = -1
       
-      for j in range(N):
+      for j in range(agents):
         if (W[j] < min):
           min = W[j]
           agent = j
-      W[agent] += T[agent]
+      W[agent] += agentTimes[agent]
       print(W)
 
     C_time = 12345
     C_agent = -1
-    for j in range(N):
+    for j in range(agents):
       if (W[j] < C_time):
         C_time = W[j]
         C_agent = j
@@ -47,15 +47,15 @@ class Solution1:
     print(f"C_time: {C_time}, C_agent: {C_agent}")
 
 class Solution:
-  def calculateWaitTime(self, N, M, T):
+  def calculateWaitTime(self, agents, customers, agentTime):
     minHeap = []
     
-    for i in range(N):
+    for i in range(agents):
       heapq.heappush(minHeap, (0, i)) # (time, agent index)
     
-    for _ in range(M):
+    for _ in range(customers):
       time, agent = heapq.heappop(minHeap)
-      heapq.heappush(minHeap, (time + T[agent], agent))
+      heapq.heappush(minHeap, (time + agentTime[agent], agent))
     
     print(minHeap[0])
       
@@ -64,6 +64,6 @@ class Solution:
   
 def runSolution():
   solution = Solution()
-  print(solution.calculateWaitTime(2, 4, [4,5]))
+  print(solution.calculateWaitTime(2, 4, [2,5]))
   pass
 runSolution()

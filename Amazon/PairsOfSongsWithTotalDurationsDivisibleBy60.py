@@ -7,7 +7,7 @@
 from collections import Counter
 
 
-class Solution:
+class SolutionRef:
   def numPairsDivisibleBy60(self, time):
     ans, count = 0, Counter()
     for t in time:
@@ -18,6 +18,21 @@ class Solution:
       count[t % 60] += 1
     
     return ans
+      
+    
+class Solution:
+  def numPairsDivisibleBy60(self, time):
+    result, counter = 0, Counter()
+    
+    for t in time:
+      moddedTime = t % 60
+      remainder  = (60 - moddedTime) % 60
+      
+      result += counter[remainder]
+      counter[moddedTime] += 1
+  
+    return result
+      
       
     
   

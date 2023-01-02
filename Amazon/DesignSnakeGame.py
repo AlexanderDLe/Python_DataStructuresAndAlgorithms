@@ -4,7 +4,10 @@
 
 '''
 
-class SnakeGame:
+from collections import deque
+
+
+class SnakeGameMyLongSolution:
   def __init__(self, width, height, food):
     self.rows = height
     self.cols = width
@@ -65,6 +68,39 @@ class SnakeGame:
     if nextCol < 0 or nextCol == self.cols: return True
     if (nextRow, nextCol) in self.tailSet : return True
     return False
+  
+class SnakeGame:
+  def __init__(self, width, height, food):
+    self.snake = deque([[0,0]])
+    self.width = width
+    self.height = height
+    self.food = deque(food)
+    self.direct = {'U': [-1,0], 'L': [0,-1], 'R':[0,1], 'D': [1,0]}
+
+  def move(self, direction):
+    snake, food, direct = self.snake, self.food, self.direct
+    
+    nextRow = snake[0][0] + direct[direction][0]
+    nextCol = snake[0][1] + direct[direction][1]
+    newHead = [nextRow, nextCol]
+    
+    # Notice that the new head can be equal to self.snake[-1]
+    if self.outOfBounds(nextRow, nextCol): return -1
+    if newHead in snake and newHead != snake[-1]: return -1
+    
+    snake.appendleft(newHead) # Move snake head
+    
+    # Eat food or move tail
+    if food and food[0] == newHead: food.popleft()
+    else                          : snake.pop()
+      
+    return len(snake) - 1
+  
+  def outOfBounds(self, row, col):
+    if row < 0 or row == self.height: return True
+    if col < 0 or col == self.width : return True
+    return False
+    
 
 
 def runSolution():

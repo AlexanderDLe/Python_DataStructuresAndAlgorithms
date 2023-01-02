@@ -7,7 +7,7 @@
 from collections import Counter
 
 
-class Solution:
+class SolutionRef:
   def minWindow(self, s, t):
     tFreq = Counter(t)
     count = len(tFreq.keys())
@@ -32,8 +32,34 @@ class Solution:
           count += 1
     
     return result
+  
+class Solution:
+  def minWindow(self, s, t):
+    freqDict = Counter(t)
+    satisfied = 0
+    uniqueChars = len(list(freqDict.keys()))
+    self.result = ''
     
-    
+    L = 0
+    for R, Rchar in enumerate(s):
+      if Rchar in freqDict:
+        freqDict[Rchar] -= 1
+        if freqDict[Rchar] == 0: satisfied += 1
+        
+      # Collapse window when match
+      while uniqueChars == satisfied and L < R:
+        # Set new potential result
+        substr = s[L: R + 1]
+        if self.result == '' or len(substr) < len(self.result):
+          self.result = substr
+        
+        Lchar = s[L]
+        L += 1
+        if Lchar in freqDict:
+          freqDict[Lchar] += 1
+          if freqDict[Lchar] == 1: satisfied -= 1
+          
+    return self.result
     
   
 def runSolution():

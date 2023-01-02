@@ -11,7 +11,7 @@ sys.path.append(parentdir)
 
 from DataStrucutres import TreeNode
 
-class Solution:
+class SolutionRef:
   def maxPathSum(self, root):
     maxPath = root.val
     
@@ -28,6 +28,35 @@ class Solution:
     
     DFS(root)
     return maxPath
+  
+class Solution:
+  
+  '''
+  
+    Time Complexity
+    O(n) to recurse through all nodes
+    
+    Space Complexity
+    O(h) max call stacks maintained will be equal to height of tree
+  
+  '''
+  
+  def maxPathSum(self, root):
+    
+    def DFS(n):
+      if n == None: return 0
+      
+      left  = DFS(n.left)
+      right = DFS(n.right)
+      withOneChild = n.val + max(left, right)
+      withBothChildren = n.val + left + right
+      
+      self.maxSum = max(self.maxSum, n.val, withOneChild, withBothChildren)
+      return max(n.val, withOneChild)
+    
+    self.maxSum = 0
+    DFS(root)
+    return self.maxSum
   
 
 def runSolution():

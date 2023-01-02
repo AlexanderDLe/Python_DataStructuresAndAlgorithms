@@ -8,7 +8,7 @@ from itertools import product
 
 
 class Solution:
-  def uniquePaths(self, items, capacity):
+  def knapsack(self, items, capacity):
     n = len(items)
     DP = {}
     
@@ -41,6 +41,6 @@ class Solution:
   
 def runSolution():
   solution = Solution()
-  print(solution.uniquePaths([[1,2], [4,3], [5,6], [6,7]], 10))
+  print(solution.knapsack([[1,2], [4,3], [5,6], [6,7]], 10))
   pass
 runSolution()

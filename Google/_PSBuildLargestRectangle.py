@@ -8,7 +8,7 @@
   co-ordinate of the box formed by the points. 
 
   removePoint(point) which removes the point from collection and returns 
-  the updated co-ordinatres of the box.
+  the updated co-ordinates of the box.
 
   _____________________________________________________________________________
 

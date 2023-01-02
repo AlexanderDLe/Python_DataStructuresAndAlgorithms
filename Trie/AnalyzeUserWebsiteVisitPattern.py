@@ -38,7 +38,7 @@ from collections import Counter, defaultdict
 from functools import cmp_to_key
 from itertools import combinations
 
-class Solution:
+class SolutionRef:
   def mostVisitedPattern(self, username, timestamp, website):
     users = defaultdict(list)
     sortedZip = sorted(zip(username, timestamp, website), key=lambda x: x[1])
@@ -53,6 +53,24 @@ class Solution:
       for pattern in allPatterns: patterns[pattern] += 1
       
     print(patterns)
+    
+    
+class Solution:
+  def mostVisitedPattern(self, username, timestamp, website):
+    sortedArr = sorted(zip(username, timestamp, website))
+    users = defaultdict(list)
+    patterns = Counter()
+    
+    for user, _, site in sortedArr:
+      users[user].append(site)
+      
+    for user, sites in list(users.items()):
+      allPatterns = set(combinations(sites, 3))
+      for pattern in allPatterns:
+        patterns[pattern] += 1
+        
+    return max(sorted(patterns), key=patterns.get)
+    
     
     
 

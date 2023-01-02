@@ -27,7 +27,7 @@ class TicTacToe:
     self.cols[col] += 1 if player == 1 else -1
     
     if row == col           : self.downDiagonal += 1 if player == 1 else -1
-    if row + col == self.n - 1: self.upDiagonal += 1 if player == 1 else -1
+    if row + col == self.n-1:   self.upDiagonal += 1 if player == 1 else -1
 
     if abs(self.rows[row])    == self.n: return 1 if player == 1 else 2
     if abs(self.cols[col])    == self.n: return 1 if player == 1 else 2

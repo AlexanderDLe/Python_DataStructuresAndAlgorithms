@@ -7,7 +7,7 @@
 from itertools import product
 
 class Solution:
-  def maxCoins(self, nums):
+  def burstBalloons(self, nums):
      nums = [1] + nums + [1]
      print(nums)
      DP = {}
@@ -32,7 +32,7 @@ class Solution:
   
 def runSolution():
   solution = Solution()
-  print(solution.maxCoins(nums = [3,1,5,8]))
+  print(solution.burstBalloons(nums = [3,1,5,8]))
   # print(solution.maxCoins(nums = [1,5]))
   pass
 runSolution()
